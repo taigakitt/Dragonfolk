@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Goryūto — Wiki</title>
+<meta name="description" content="Enter the world of Goryūto, a wiki for Dragonfolk.">
+<meta name="robots" content="index, follow">
+<meta property="og:image" content="https://i.imgur.com/h3rjXYy.png">
+<meta property="og:url" content="https://taigakitt.github.io/Dragonfolk/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="player" style="position:fixed; width:0; height:0; opacity:0;"></div>
+
+    <div class="dragon-cd" onclick="toggleMusic()"></div>
+
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+<!-- ============================================================ -->
+<!-- LANDING PAGE -->
+<!-- ============================================================ -->
+<div id="landing" class="page active">
+  <div class="landing-bg"></div>
+  
+  <div class="landing-content">
+    <div class="world-seal">
+      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="60" cy="60" r="55" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.4"/>
+        <circle cx="60" cy="60" r="48" stroke="var(--gold)" stroke-width="0.75" stroke-opacity="0.4"/>
+        <circle cx="60" cy="60" r="38" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.5"/>
+        <!-- Dragon body simplified -->
+
+        <path d="M60 22 C75 30 88 45 85 60 C82 75 68 85 60 98 C52 85 38 75 35 60 C32 45 45 30 60 22Z" stroke="var(--gold)" stroke-width="1" fill="none" stroke-opacity="0.7"/>
+        <circle cx="60" cy="60" r="5" fill="var(--gold)" fill-opacity="0.6"/>
+
+        <!-- Rune marks at quarters -->
+        <line x1="60" y1="5" x2="60" y2="15" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
+        <line x1="60" y1="105" x2="60" y2="115" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
+        <line x1="5" y1="60" x2="15" y2="60" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
+        <line x1="105" y1="60" x2="115" y2="60" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
+
+        <!-- Corner ornaments -->
+        <circle cx="60" cy="8" r="2" fill="var(--gold)" fill-opacity="0.5"/>
+        <circle cx="112" cy="60" r="2" fill="var(--gold)" fill-opacity="0.5"/>
+        <circle cx="60" cy="112" r="2" fill="var(--gold)" fill-opacity="0.5"/>
+        <circle cx="8" cy="60" r="2" fill="var(--gold)" fill-opacity="0.5"/>
+      </svg>
+    </div>
+    
+    <h1 class="landing-title">Goryūto</h1>
+    <div class="landing-divider"></div>
+
+    <p class="landing-lore">
+      Where rivers converge at the Abyssal Maw, where the Old Ones watch from beyond the veil,
+      and where the Houses sharpen their claws.
+    </p>
+    
+    <nav class="nav-grid">
+      <button class="nav-btn" onclick="showPage('announce')">
+        <span class="btn-icon">✉︎</span>
+        Announcements
+      </button>
+
+       <button class="nav-btn" onclick="showPage('world-lore')">
+        <span class="btn-icon">༝⛩༝</span>
+        Lore
+      </button>
+    </nav>
+
+</div></div>
+
+<!-- ============================================================ -->
+<!-- Announcements -->
+<!-- ============================================================ -->
+<div id="announce" class="page">
+<div class="announce-bg"></div>
+
+
+  <button class="back-btn" onclick="goBack()">
+    <span class="btn-arrow">⁀➴</span>
+    <span class="btn-label">Return</span>
+  </button>
+
+  <div class="announce-particles" id="announceParticles"></div>
+
+  <div class="announce-scene">
+
+    <div class="announce-scroll-content">
+
+      <div class="announce-header">
+        <div class="announce-rune">✦</div>
+        <h1 class="announce-title">Announcements</h1>
+        <div class="announce-title-rule"></div>
+      </div>
+
+      <div class="announce-block" style="--delay:0.1s">
+        <div class="announce-block-label">
+          Currently Working On
+          <span class="announce-block-icon">✿・</span>
+        </div>
+        <div class="announce-block-body announce-current">
+
+<!-- EDIT CURRENTLY WORKING JUST BELOW -->
+          <span class="announce-here">The World Lore Page!</span>
+        </div>
+      </div>
+
+      <div class="announce-block" style="--delay:0.25s">
+        <div class="announce-block-label">
+          Coming Soon
+          <span class="announce-block-icon">✿・・</span>
+        </div>
+        <div class="announce-block-body">
+          <ul class="announce-list announce-list-preview">
+<!-- COMING SOON LIST BELOW -->
+            <li>
+             <div class="preview-portrait" aria-hidden="true">
+              <img src="images/KenjiSaiwa.webp" alt="">
+             </div>
+             <span>Kenji Saiwa</span>
+            </li>
+
+            <li>
+              <div class="preview-portrait" aria-hidden="true">
+                <img src="images/OldOneW.webp" alt="">
+             </div>
+             <span>Old One (White)</span>
+            </li>
+            <li>
+              <div class="preview-portrait" aria-hidden="true">
+              <img src="images/OldOneB.webp" alt="">
+             </div>
+             <span>Old One (Black)</span>
+            </li>
+            <li>
+              <div class="preview-portrait" aria-hidden="true">
+              <img src="images/OldOneG.webp" alt="">
+             </div>
+             <span>Old One (Green)</span>
+            </li>
+            <li>
+             <div class="preview-portrait" aria-hidden="true">
+              <img src="images/KoryuuH.jpeg" alt="">
+             </div>
+             <span>Koryuu Horned One</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="announce-block" style="--delay:0.4s">
+        <div class="announce-block-label">
+          To Generate
+          <span class="announce-block-icon">✿・・・</span>
+        </div>
+        <div class="announce-block-body">
+          <ul class="announce-list announce-list-grid">
+<!-- TO GENERATE LIST BELOW -->
+            <li><span>Atsushi Akagi</span></li>
+            <li><span>Sayuri Saiwa</span></li>
+            <li><span>Yumi Akagi</span></li>
+            <li><span>Chisa</span></li>
+            <li><span>Dragonfolk Scenario</span></li>
+            <li><span>Wyrm Girls &times;3</span></li>
+            <li><span>Seven Deadly Sins</span></li>
+            <li><span>Harem</span></li>
+            <li><span>Driftcrag Pirate</span></li>
+            <li><span>Old One (Red Moon)</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="announce-rune">✦ ✦ ✦</div>
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ============================================================ -->
+<!-- WORLD LORE PAGE -->
+<!-- ============================================================ -->
+<div id="world-lore" class="page">
+
+ <button class="back-btn" onclick="goBack()">
+    <span class="btn-arrow">⁀➴</span>
+    <span class="btn-label">Return</span>
+  </button>
+
+  <div style="max-width:1100px;margin:0 auto;padding:6rem 2rem 4rem;">
+    <div class="page-header">
+      <h1>World Lore</h1>
+      <p>Coming Soon.</p>
+    </div>
+    
+   </div>
+</div>
+
+
+<!-- ============================================================ -->
+<!-- JAVASCRIPT -->
+<!-- ============================================================ -->
+<script src="script.js"></script>
+</body>
+</html>
