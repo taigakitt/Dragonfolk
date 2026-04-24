@@ -91,7 +91,7 @@
     <div class="announce-scroll-content">
 
       <div class="announce-header">
-        <div class="announce-rune">✦</div>
+        <div class="title-rune">✦</div>
         <h1 class="announce-title">Announcements</h1>
         <div class="announce-title-rule"></div>
       </div>
@@ -104,7 +104,7 @@
         <div class="announce-block-body announce-current">
 
 <!-- EDIT CURRENTLY WORKING JUST BELOW -->
-          <span class="announce-here">The World Lore Page!</span>
+          <span class="announce-here">The Contact Me Page!</span>
         </div>
       </div>
 
@@ -173,7 +173,7 @@
         </div>
       </div>
 
-      <div class="announce-rune">✦ ✦ ✦</div>
+      <div class="title-rune">✦ ✦ ✦</div>
 
     </div>
   </div>
@@ -191,15 +191,258 @@
     <span class="btn-label">Return</span>
   </button>
 
-  <div style="max-width:1100px;margin:0 auto;padding:6rem 2rem 4rem;">
-    <div class="page-header">
-      <h1>World Lore</h1>
-      <p>Coming Soon.</p>
-    </div>
-    
-   </div>
-</div>
+<div class="lore-box" id="LoreBanner">
+    <div class="lore-banner-bg" id="LoreBannerBG"></div>
 
+    <div class="lore-top-content">
+      <div class="title-rune">✦</div>
+      <h1 class="lore-title">World Lore</h1>
+      <div class="lore-hero-rule"></div>
+    </div>
+
+    <div class="lore-filter-bar">
+      <button class="lore-filter-btn active" data-filter="geography">Geography</button>
+      <button class="lore-filter-btn" data-filter="races">Races</button>
+      <button class="lore-filter-btn" data-filter="events">Events 🙵 Culture</button>
+      <button class="lore-filter-btn" data-filter="creatures">Creatures</button>
+    </div>
+  </div>
+
+<!-- ── GEOGRAPHY ── -->
+<section class="lore-section" data-category="geography">
+  <div class="lore-region-strip">
+
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Maw.webp');">
+      </div>
+      <div class="lore-region-scrim"></div>
+      <div class="lore-region-thumb"><div class="lore-region-label">Abyssal Maw</div></div>
+      <div class="lore-region-panel">
+        <div class="panel-header">
+          <p class="eyebrow">Central Chasm · Sacred Site</p>
+          <h3>The Abyssal Maw</h3>
+          <p>At the heart of the circular continent, Goryūto, all rivers converge and crash in endless waterfalls into a mist-and-myt shrouded chasm no folk has ever reached the bottom of.</p>
+        </div>
+    </div>
+ </div>
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Plains.webp');"></div>
+      <div class="lore-region-scrim"></div>
+      <div class="lore-region-thumb"><div class="lore-region-label">Ringing Plains</div></div>
+      <div class="lore-region-panel">
+        <div>
+          <p class="eyebrow">Central · Fertile Fields</p>
+          <h3>The Ringing Plains</h3>
+          <p>Lush, fertile soil surrounding the Maw. Trade is abundant.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Spines.webp');">
+      </div>
+      <div class="lore-region-scrim">
+      </div>
+      <div class="lore-region-thumb">
+        <div class="lore-region-label">Great Dragon Spine</div>
+      </div>
+      <div class="lore-region-panel">
+        <div>
+          <p class="eyebrow">Northeast · Mountain Range</p>
+          <h3>The Great Dragon Spine</h3>
+          <p>Jagged, snow-capped peaks threaded with ancient ley lines. The mountains channel raw magical energy through the earth — the ruling Houses built in their shadow. Koryuu-gyeong, the capital, nests at the base. Onkei-shuu, a province that neighbors the capital and goverend by Saiwa, Akagi, and Ryuhwa Houses.</p>
+        </div>
+       </div>
+      </div>
+    
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Mistwood.webp');"></div>
+      <div class="lore-region-scrim"></div>
+      <div class="lore-region-thumb"><div class="lore-region-label">Mistwood Expanse</div></div>
+      <div class="lore-region-panel">
+        <div>
+          <p class="eyebrow">Southeast · Enchanted Forest</p>
+          <h3>Mistwood Expanse</h3>
+          <p>Ancient trees and shifting magical paths. Bioluminescent undergrowth and rarities.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Isles.webp');"></div>
+      <div class="lore-region-scrim"></div>
+      <div class="lore-region-thumb"><div class="lore-region-label">Driftcrag Isles</div></div>
+      <div class="lore-region-panel">
+        <div>
+          <p class="eyebrow">Coastal · Archipelago</p>
+          <h3>The Driftcrag Isles</h3>
+          <p>Rugged cliffs and scattered islands where piracy and vital maritime trade clash. The Isles have no lord — only captains.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="lore-region" onclick="toggleRegion(this)">
+      <div class="lore-region-bg" style="background-image:url('images/Wastes.webp');"></div>
+      <div class="lore-region-scrim"></div>
+      <div class="lore-region-thumb"><div class="lore-region-label">Ashari Wastes</div></div>
+      <div class="lore-region-panel">
+        <div>
+          <p class="eyebrow">West · Desert</p>
+          <h3>The Ashari Wastes</h3>
+          <p>Barren deserts and the ruins of civilizations.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Races ── -->
+<section class="lore-section hidden" data-category="races">
+  <div class="lore-content-preview">
+    <div class="lore-card-grid">
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Upper Caste</div>
+        <div class="lore-entry-title">Horned Ones</div>
+        <p class="lore-entry-body">Revered, with minimal scales and great magical aptitude. They bear horns and tails. </p>
+
+      </div>
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Middle Caste</div>
+        <div class="lore-entry-title">Scaled Ones</div>
+        <p class="lore-entry-body">Fully scaled, sturdy and non-magical. Humanoid in face and form. Often builders, soldiers, and craftsfolk.</p>
+      </div>
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Lower Caste</div>
+        <div class="lore-entry-title">Wyrm Kin</div>
+        <p class="lore-entry-body">Marginalized, dismissed. Digitigrade legs and more bestial in form. The slur "wyrm" originates here.</p>
+      </div>
+      </div>
+    </div>
+</section>
+
+<!-- ── EVENTS & CULTURE ── -->
+<section class="lore-section hidden" data-category="events">
+  <div class="lore-content-preview">
+    <div class="lore-card-grid">
+
+      <div class="lore-entry-card">
+       <div class="lore-entry-eyebrow">Dieties</div>
+        <div class="lore-entry-title">Old Ones</div>
+        <p class="lore-entry-body">Ancient dragons of old, tied to religious folk belief. Worshipped as divine progenitors to Dragonfolk.</p>
+      </div>
+
+      <div class="lore-entry-card">
+       <div class="lore-entry-eyebrow">Annual Event</div>
+        <div class="lore-entry-title">The Saegu Matsuri</div>
+        <p class="lore-entry-body">A festival that celebrates the turn into a new year. The past is remembered, the new is encouraged.</p>
+       <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">New Year</span>
+           <span class="lore-key-tag">Saegu Matsuri</span>
+         </div>
+      </div>
+
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Annual Event</div>
+        <div class="lore-entry-title">The Flower Festival</div>
+        <p class="lore-entry-body">Once a year, special trees bloom for a single week. A celebration is held to welcome spring.</p>
+         <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">spring festival</span>
+           <span class="lore-key-tag">flower festival</span>
+         </div>
+      </div>
+
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Rare Phenomenon</div>
+        <div class="lore-entry-title">The Red Moon</div>
+        <p class="lore-entry-body">A random celestial event that afflicts random Dragonfolk with glassy scales and burning heat.</p>
+         <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">rut</span>
+           <span class="lore-key-tag">red moon</span>
+           <span class="lore-key-tag">glassy</span>
+         </div>
+      </div>
+
+ <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Location</div>
+        <div class="lore-entry-title">Red Lantern District</div>
+        <p class="lore-entry-body">Within Koryuu-gyeong, a pleasure district where crimson lanterns glow, buildings crowd close, and folk dress the part </p>
+         <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">red lantern district</span>
+           <span class="lore-key-tag">red light district</span>
+           <span class="lore-key-tag">brothel</span>
+           <span class="lore-key-tag">whorehouse</span>
+         </div>
+      </div>
+
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Threat</div>
+        <div class="lore-entry-title">The Decay</div>
+        <p class="lore-entry-body">A mysterious corruption spreading through the Mistwood's heart. Waters go murky. Paths turn treacherous.</p>
+        <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">decay</span>
+           <span class="lore-key-tag">corruption</span>
+         </div>
+      </div>
+    </div>
+</section>
+
+<!-- ── CREATURES ── -->
+<section class="lore-section hidden" data-category="creatures">
+  <div class="lore-content-preview">
+    <div class="lore-card-grid">
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Mount</div>
+        <div class="lore-entry-title">Qilin</div>
+        <p class="lore-entry-body">Celestial mounts used in place of horses — but only the wealthy can afford them. Their presence marks power and status.</p>
+        <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">qilin</span>
+           <span class="lore-key-tag">horse</span>
+           <span class="lore-key-tag">stables</span>
+         </div>
+      </div>
+
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Predator</div>
+        <div class="lore-entry-title">Yamair</div>
+        <p class="lore-entry-body">Predatory mountain drakes — wolf-sized, full of spicy fire and acidic blood. They hunt in coordinated packs across the high passes of the Dragon Spine.</p>
+        <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">yamair</span>
+           <span class="lore-key-tag">drake</span>
+           <span class="lore-key-tag">wolf</span>
+           <span class="lore-key-tag">coyote</span>
+           <span class="lore-key-tag">beast</span>
+         </div>
+      </div>
+
+      <div class="lore-entry-card">
+        <div class="lore-entry-eyebrow">Foreigners</div>
+        <div class="lore-entry-title">Hunters</div>
+        <p class="lore-entry-body">From overseas, they seek Dragonfolk for nefarious reasons.</p>
+        <div class="lore-entry-keys-toggle" onclick="toggleKeys(this)">➴ Triggers
+         </div>
+         <div class="lore-entry-keys">
+           <span class="lore-key-tag">hunters</span>
+           <span class="lore-key-tag">overseas</span>
+         </div>
+      </div>
+
+     </div>
+  </div>
+</section>
 
 <!-- ============================================================ -->
 <!-- JAVASCRIPT -->
