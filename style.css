@@ -1120,7 +1120,6 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     background-attachment: scroll;
   }
 
-  }
   .lore-box {
     min-height: 35vh;
   }
