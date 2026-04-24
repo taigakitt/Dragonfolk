@@ -1114,6 +1114,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     height: 60px;
     bottom: .5rem;
     right: .5rem;
+  }
 
   #world-lore {
     background-attachment: scroll;
@@ -1125,7 +1126,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   }
 
   .lore-filter-bar {
-    padding-bottom: 0.5rem
+    padding-bottom: 0.5rem;
     gap: 0.2rem;
     border-bottom: 3px ridge var(--gold-light);
   }
