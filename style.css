@@ -1191,4 +1191,5 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     ) 70%, 
     transparent 100%
   );
+  }
 }
