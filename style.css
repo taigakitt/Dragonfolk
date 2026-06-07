@@ -107,21 +107,60 @@ body::before {
 }
 
 .world-seal {
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 2rem;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   position: relative;
+  background: radial-gradient(circle, color-mix(in srgb, var(--gold-dim), transparent 80%) 0%, transparent 70%);
 }
 
-.world-seal svg {
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-  animation: rotateSeal 45s linear infinite;
+.seal-character {
+  position: relative;
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 5.5rem;
+  line-height: 1;
+  cursor: default;
+  user-select: none;
+  color: transparent; 
+  background: none;
+  -webkit-text-stroke: 1.5px var(--gold); 
+  filter: drop-shadow(0 0 10px var(--gold-dim)); 
+  animation: sealFloat 8s ease-in-out infinite;
+  will-change: transform, opacity;
+  display: inline-block;
 }
 
-@keyframes rotateSeal {
-  to { transform: rotate(360deg); }
+.seal-character::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  left: 0;
+  color: transparent;
+  -webkit-text-stroke: 1.5px color-mix(in srgb, var(--gold-light), white 30%); 
+  background: linear-gradient(
+    110deg, 
+    transparent 40%, 
+    var(--gold-light) 50%, 
+    transparent 60%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: glintSweep 5s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes glintSweep {
+  0% { background-position: -200% 0; opacity: 0; }
+  10% { opacity: 1; }
+  100% { background-position: 200% 0; opacity: 0; }
+}
+
+@keyframes sealFloat {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-10px) scale(1.02); }
 }
 
 .landing-title {
@@ -1055,6 +1094,427 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 }
 
 /* ======================================================
+   CREATOR PAGE
+   ====================================================== */
+
+/* ── Hero ── */
+.creator-hero {
+  position: relative;
+  min-height: 36vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.creator-hero-bg {
+  position: absolute;
+  inset: 0;
+  /* PLACEHOLDER gradient — swap for --creator-bg image in :root when ready */
+  background:
+    radial-gradient(ellipse at 30% 60%, color-mix(in srgb, var(--crimson), transparent 60%) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 35%, color-mix(in srgb, var(--gold-dim), transparent 55%) 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 85%, color-mix(in srgb, var(--jade), transparent 65%) 0%, transparent 45%),
+    linear-gradient(175deg, #0e0b12 0%, #0a0810 100%);
+  /* SWAP IN when you have an image:
+     background: var(--creator-bg) center / cover no-repeat; */
+}
+
+.creator-hero-vignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,
+    rgba(10,8,6,0.3) 0%,
+    rgba(10,8,6,0.5) 60%,
+    var(--ink) 100%);
+}
+
+.creator-hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 4rem 2rem 2.5rem;
+  animation: fadeUp 1s ease both;
+}
+
+.creator-title {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 5vw, 3.6rem);
+  background: linear-gradient(
+    20deg,
+    color-mix(in srgb, var(--gold-dim), white 60%) 0%,
+    color-mix(in srgb, var(--gold), white 95%) 10%,
+    color-mix(in srgb, var(--gold), white 60%) 20%,
+    color-mix(in srgb, var(--gold), var(--ink) 50%) 35%,
+    var(--gold) 45%,
+    color-mix(in srgb, var(--gold-dim), white 60%) 70%,
+    var(--gold) 85%,
+    color-mix(in srgb, var(--gold), white 60%) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: brightness(1.2) drop-shadow(0 2px 8px rgba(0,0,0,0.7));
+  letter-spacing: 0.07em;
+  margin-bottom: 0.4rem;
+}
+
+.creator-rule {
+  width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  margin: 0.5rem auto;
+}
+
+.creator-tagline {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 1rem;
+  letter-spacing: 0.05em;
+}
+
+/* ── Body ── */
+.creator-body {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 3rem 2rem 7rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+/* ── Section label (reuses lore pattern) ── */
+.creator-section-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.creator-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--gold-dim), transparent 50%),
+    transparent);
+}
+
+/* ── About Card ── */
+.creator-about-card {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+.creator-about-portrait {
+  position: relative;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
+}
+
+.creator-portrait-placeholder {
+  width: 100%;
+  height: 100%;
+  background: color-mix(in srgb, var(--gold), transparent 94%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+}
+
+.creator-portrait-glyph {
+  font-size: 3.5rem;
+  color: var(--gold-dim);
+  opacity: 0.4;
+}
+
+.creator-about-text {
+  padding-top: 0.3rem;
+}
+
+.creator-bio-placeholder {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  font-style: italic;
+  line-height: 1.8;
+}
+
+/* Real bio paragraphs (non-italic, full color) */
+.creator-about-text p:not(.creator-bio-placeholder) {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.85;
+  margin-bottom: 0.9rem;
+}
+
+/* ── Profile Link ── */
+.creator-profile-link {
+  display: block;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
+  background: color-mix(in srgb, var(--gold), transparent 96%);
+  padding: 1.6rem 2rem;
+  transition: border-color 0.3s, background 0.3s, transform 0.25s;
+  cursor: url('images/CursorOpen.png'), pointer;
+}
+
+.creator-profile-link:hover {
+  border-color: var(--gold-dim);
+  background: color-mix(in srgb, var(--gold), transparent 91%);
+  transform: translateY(-2px);
+}
+
+.creator-profile-link-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.creator-profile-site-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.3rem;
+}
+
+.creator-profile-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 1.5rem;
+  color: var(--gold-light);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.2rem;
+}
+
+.creator-profile-sub {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+}
+
+.creator-profile-arrow {
+  font-size: 1.8rem;
+  color: var(--gold-dim);
+  opacity: 0.6;
+  transition: transform 0.3s ease, opacity 0.3s;
+  flex-shrink: 0;
+}
+
+.creator-profile-link:hover .creator-profile-arrow {
+  transform: translateX(5px);
+  opacity: 1;
+}
+
+/* Shimmer sweep on hover */
+.creator-profile-shimmer {
+  position: absolute;
+  top: 0; left: -120%;
+  width: 60%; height: 100%;
+  background: linear-gradient(90deg,
+    transparent,
+    color-mix(in srgb, var(--gold), transparent 88%),
+    transparent);
+  transform: skewX(-20deg);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.creator-profile-link:hover .creator-profile-shimmer {
+  left: 160%;
+}
+
+/* ── Request Form ── */
+.creator-form-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.creator-form-intro {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--text-dim);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+
+.creator-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  padding: 2rem;
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
+  background: color-mix(in srgb, var(--gold), transparent 97%);
+  mask-image: linear-gradient(to bottom, transparent, black 6%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, black 6%, black 90%, transparent);
+}
+
+.creator-field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.creator-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.creator-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.creator-input {
+  background: color-mix(in srgb, var(--ink), transparent 30%);
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
+  color: var(--text-body);
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  padding: 0.6rem 0.9rem;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  width: 100%;
+  border-radius: 0;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.creator-input::placeholder { color: var(--text-dim); opacity: 0.6; }
+
+.creator-input:focus {
+  border-color: var(--gold-dim);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold), transparent 88%);
+}
+
+.creator-select {
+  cursor: url('images/CursorOpen.png'), pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a5c20'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.9rem center;
+  padding-right: 2.2rem;
+}
+
+.creator-select option {
+  background: #1a1410;
+  color: var(--text-body);
+}
+
+.creator-textarea {
+  resize: vertical;
+  min-height: 120px;
+  line-height: 1.6;
+}
+
+.creator-form-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 0.3rem;
+}
+
+.creator-form-status {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+
+.creator-form-status.success { color: var(--jade-bright); }
+.creator-form-status.error   { color: var(--crimson-bright); }
+
+.creator-submit-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: color-mix(in srgb, var(--gold), transparent 90%);
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 45%);
+  color: var(--gold-light);
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  padding: 0.7rem 1.4rem;
+  cursor: url('images/CursorOpen.png'), pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.creator-submit-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--gold-light), transparent 85%), transparent);
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.creator-submit-btn:hover {
+  border-color: var(--gold);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--gold-dim), transparent 60%);
+}
+
+.creator-submit-btn:hover::before { opacity: 1; }
+
+.creator-submit-arrow {
+  transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+  font-size: 1rem;
+}
+
+.creator-submit-btn:hover .creator-submit-arrow {
+  transform: translateX(4px);
+}
+
+.creator-form-note {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  opacity: 0.7;
+  text-align: center;
+  letter-spacing: 0.03em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 650px) {
+  .creator-about-card { grid-template-columns: 1fr; }
+  .creator-about-portrait { max-width: 160px; }
+  .creator-field-row { grid-template-columns: 1fr; }
+  .creator-form { padding: 1.3rem; }
+  .creator-body { padding: 2rem 1.2rem 5rem; }
+}
+
+/* ======================================================
    MEDIA ADJUSTMENTS
    ====================================================== */
 /* --- TABLETS & SMALL LAPTOPS (Up to 900px) --- */
@@ -1109,6 +1569,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     width: 90px;
     height: 44px;
   }
+
   .dragon-cd {
     width: 60px;
     height: 60px;
@@ -1119,6 +1580,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   #world-lore {
     background-attachment: scroll;
   }
+
 
   .lore-box {
     min-height: 35vh;
