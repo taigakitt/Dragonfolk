@@ -26,28 +26,9 @@
   <div class="landing-bg"></div>
   
   <div class="landing-content">
+
     <div class="world-seal">
-      <svg viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="60" cy="60" r="55" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.4"/>
-        <circle cx="60" cy="60" r="48" stroke="var(--gold)" stroke-width="0.75" stroke-opacity="0.4"/>
-        <circle cx="60" cy="60" r="38" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.5"/>
-        <!-- Dragon body simplified -->
-
-        <path d="M60 22 C75 30 88 45 85 60 C82 75 68 85 60 98 C52 85 38 75 35 60 C32 45 45 30 60 22Z" stroke="var(--gold)" stroke-width="1" fill="none" stroke-opacity="0.7"/>
-        <circle cx="60" cy="60" r="5" fill="var(--gold)" fill-opacity="0.6"/>
-
-        <!-- Rune marks at quarters -->
-        <line x1="60" y1="5" x2="60" y2="15" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
-        <line x1="60" y1="105" x2="60" y2="115" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
-        <line x1="5" y1="60" x2="15" y2="60" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
-        <line x1="105" y1="60" x2="115" y2="60" stroke="var(--gold)" stroke-width="1" stroke-opacity="0.6"/>
-
-        <!-- Corner ornaments -->
-        <circle cx="60" cy="8" r="2" fill="var(--gold)" fill-opacity="0.5"/>
-        <circle cx="112" cy="60" r="2" fill="var(--gold)" fill-opacity="0.5"/>
-        <circle cx="60" cy="112" r="2" fill="var(--gold)" fill-opacity="0.5"/>
-        <circle cx="8" cy="60" r="2" fill="var(--gold)" fill-opacity="0.5"/>
-      </svg>
+      <span class="seal-character" data-text="龍">龍</span>
     </div>
     
     <h1 class="landing-title">Goryūto</h1>
@@ -67,6 +48,11 @@
        <button class="nav-btn" onclick="showPage('world-lore')">
         <span class="btn-icon">༝⛩༝</span>
         Lore
+      </button>
+
+       <button class="nav-btn" onclick="showPage('creator-details')">
+        <span class="btn-icon">𐑼⑅𐑼⋆</span>
+        Creator
       </button>
     </nav>
 
@@ -443,6 +429,128 @@
      </div>
   </div>
 </section>
+</div>
+</div>
+
+<!-- ============================================================ -->
+<!-- CREATOR PAGE -->
+<!-- ============================================================ -->
+<div id="creator-details" class="page">
+ 
+  <button class="back-btn" onclick="goBack()">
+    <span class="btn-arrow">⁀➴</span>
+    <span class="btn-label">Return</span>
+  </button>
+ 
+  <!-- ── HERO ── -->
+  <div class="creator-hero">
+    <div class="creator-hero-bg"></div>
+    <div class="creator-hero-vignette"></div>
+    <div class="creator-hero-content">
+      <div class="title-rune">✦</div>
+      <h1 class="creator-title">The Creator</h1>
+      <div class="creator-rule"></div>
+      <p class="creator-tagline">The Old One behind the world</p>
+    </div>
+  </div>
+ 
+  <!-- ── BODY ── -->
+  <div class="creator-body">
+ 
+    <!-- ABOUT -->
+    <section class="creator-section creator-about">
+      <div class="creator-section-label">About Me</div>
+      <div class="creator-about-card">
+        <div class="creator-about-portrait">
+          <!-- Swap src for your own image when ready -->
+          <div class="creator-portrait-placeholder">
+            <span class="creator-portrait-glyph">𐑼</span>
+          </div>
+        </div>
+        <div class="creator-about-text">
+          <!-- WRITE YOUR BIO BELOW -->
+          <p class="creator-bio-placeholder">Your words go here. Tell them who you are, what you make, what drives you to build a world like this.</p>
+          <!-- END BIO -->
+        </div>
+      </div>
+    </section>
+ 
+    <!-- BOT PROFILE LINK -->
+    <section class="creator-section">
+      <div class="creator-section-label">Find Me</div>
+      <a class="creator-profile-link" href="https://dreamjourneyai.com/app/profile/Taigakitt" target="_blank" rel="noopener">
+        <div class="creator-profile-link-inner">
+          <div class="creator-profile-link-left">
+            <div class="creator-profile-site-label">DreamJourney Profile</div>
+            <div class="creator-profile-name">Taigakitt</div>
+            <div class="creator-profile-sub">View characters &amp; scenarios on the platform →</div>
+          </div>
+          <div class="creator-profile-arrow">➴</div>
+        </div>
+        <div class="creator-profile-shimmer"></div>
+      </a>
+    </section>
+ 
+    <!-- REQUEST FORM -->
+    <section class="creator-section creator-request-section">
+      <div class="creator-section-label">Requests</div>
+ 
+      <div class="creator-form-wrap">
+        <p class="creator-form-intro">Have a character, scenario, or something else in mind? Fill this out and it'll reach me directly.</p>
+ 
+        <div class="creator-form" id="creatorForm">
+ 
+          <div class="creator-field-row">
+            <div class="creator-field">
+              <label class="creator-label" for="req-name">Your Name / Handle</label>
+              <input class="creator-input" type="text" id="req-name" placeholder="How should I call you?">
+            </div>
+            <div class="creator-field">
+              <label class="creator-label" for="req-type">Request Type</label>
+              <select class="creator-input creator-select" id="req-type">
+                <option value="" disabled selected>Select one...</option>
+                <option value="Character">Character Concept</option>
+                <option value="Scenario">Scenario / Story Beat</option>
+                <option value="Lore">Lore Question / Expansion</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+ 
+          <div class="creator-field">
+            <label class="creator-label" for="req-subject">Subject</label>
+            <input class="creator-input" type="text" id="req-subject" placeholder="Brief title for your request...">
+          </div>
+ 
+          <div class="creator-field">
+            <label class="creator-label" for="req-body">Details</label>
+            <textarea class="creator-input creator-textarea" id="req-body" rows="5" placeholder="Describe what you have in mind. The more detail the better."></textarea>
+          </div>
+ 
+          <div class="creator-field">
+            <label class="creator-label" for="req-contact">Where to reach you (optional)</label>
+            <input class="creator-input" type="text" id="req-contact" placeholder="Discord, platform handle, etc.">
+          </div>
+ 
+          <div class="creator-form-footer">
+            <div class="creator-form-status" id="formStatus"></div>
+            <button class="creator-submit-btn" onclick="submitRequest()">
+              <span class="creator-submit-label">Send Request</span>
+              <span class="creator-submit-arrow">➴</span>
+            </button>
+          </div>
+ 
+        </div><!-- /creator-form -->
+ 
+        <p class="creator-form-note">
+          Responses aren't guaranteed, but everything is read. ✦
+        </p>
+      </div>
+ 
+    </section>
+ 
+  </div><!-- /creator-body -->
+</div>
 
 <!-- ============================================================ -->
 <!-- JAVASCRIPT -->
