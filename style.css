@@ -23,6 +23,9 @@
   --Abmaw: url('images/Goryuto.webp');
   --ann-bg: url('images/Scroll.webp');
   --library: url('images/Library.webp');
+  --tai: url('images/Tai.webp');
+  --tai-stripes: url('images/Tai-Stripes.png');
+
   
   /*CONTROL PANEL */
   --particle-count: 25;
@@ -1097,28 +1100,39 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
    CREATOR PAGE
    ====================================================== */
 
-/* ── Hero ── */
+.page-content-wrapper {
+  padding-left: 35vh;
+}
+
 .creator-hero {
   position: relative;
   min-height: 36vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
+  text-align: center;
+  justify-content: center;
   overflow: hidden;
+  background: transparent;
+  padding: 40px 20px;
 }
 
 .creator-hero-bg {
-  position: absolute;
+  position: fixed;
   inset: 0;
-  /* PLACEHOLDER gradient — swap for --creator-bg image in :root when ready */
-  background:
-    radial-gradient(ellipse at 30% 60%, color-mix(in srgb, var(--crimson), transparent 60%) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 35%, color-mix(in srgb, var(--gold-dim), transparent 55%) 0%, transparent 50%),
-    radial-gradient(ellipse at 55% 85%, color-mix(in srgb, var(--jade), transparent 65%) 0%, transparent 45%),
-    linear-gradient(175deg, #0e0b12 0%, #0a0810 100%);
-  /* SWAP IN when you have an image:
-     background: var(--creator-bg) center / cover no-repeat; */
+  background: var(--tai) left top / auto 100vh no-repeat;
+  z-index: -1;
+}
+
+.creator-stripes {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  bottom: 0;
+  width: 45vh;
+  background: var(--tai-stripes) center top / auto 100vh no-repeat;
+  z-index: -1;
+  transform: scaleX(-1) scaleY(-1);
 }
 
 .creator-hero-vignette {
@@ -1128,6 +1142,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     rgba(10,8,6,0.3) 0%,
     rgba(10,8,6,0.5) 60%,
     var(--ink) 100%);
+ display: none;
 }
 
 .creator-hero-content {
@@ -1538,6 +1553,12 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   .lore-banner-bg {    
     background-position: center 65%;
     background-size: 200%; 
+  }
+
+.page-content-wrapper {
+    padding-left: 45vh; 
+    align-items: center; 
+    padding-right: 40px;
   }
 }
 
