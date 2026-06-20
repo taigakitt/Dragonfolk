@@ -1101,7 +1101,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
    ====================================================== */
 
 .page-content-wrapper {
-  padding-left: 35vh;
+  padding-left: 28vh;
 }
 
 .creator-hero {
@@ -1114,7 +1114,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   justify-content: center;
   overflow: hidden;
   background: transparent;
-  padding: 40px 20px;
+  z-index: -2;
 }
 
 .creator-hero-bg {
@@ -1127,22 +1127,12 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-stripes {
   position: fixed;
   top: 0;
-  right: -250px;
+  right: -111px;
   bottom: 0;
   width: 45vh;
   background: var(--tai-stripes) center top / auto 100vh no-repeat;
   z-index: -1;
-  transform: scaleX(-1) scaleY(-1);
-}
-
-.creator-hero-vignette {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(10,8,6,0.3) 0%,
-    rgba(10,8,6,0.5) 60%,
-    var(--ink) 100%);
- display: none;
+  transform: scaleX(-1);
 }
 
 .creator-hero-content {
@@ -1153,20 +1143,23 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   animation: fadeUp 1s ease both;
 }
 
+.taiga-rune {
+  color: color-mix(in srgb, var(--jade), var(--ink) 50%);
+}
+
 .creator-title {
   font-family: 'Cinzel Decorative', serif;
   font-size: clamp(2rem, 5vw, 3.6rem);
   background: linear-gradient(
     20deg,
-    color-mix(in srgb, var(--gold-dim), white 60%) 0%,
-    color-mix(in srgb, var(--gold), white 95%) 10%,
-    color-mix(in srgb, var(--gold), white 60%) 20%,
-    color-mix(in srgb, var(--gold), var(--ink) 50%) 35%,
-    var(--gold) 45%,
-    color-mix(in srgb, var(--gold-dim), white 60%) 70%,
-    var(--gold) 85%,
-    color-mix(in srgb, var(--gold), white 60%) 100%
-  );
+    color-mix(in srgb, var(--jade), white 40%) 0%,
+    color-mix(in srgb, var(--jade-bright), white 95%) 10%,
+    color-mix(in srgb, var(--jade), white 60%) 20%,
+    color-mix(in srgb, var(--jade-bright), blue 40%) 35%,
+    color-mix(in srgb, var(--jade), blue 20%) 45%,
+    color-mix(in srgb, var(--jade-bright), white 60%) 70%,
+    color-mix(in srgb, var(--jade-bright), blue 40%) 85%,
+    color-mix(in srgb, var(--jade), white 60%) 100%  );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1178,19 +1171,18 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-rule {
   width: 140px;
   height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
+  background: linear-gradient(90deg, transparent, color-mix(in srgb, var(--crimson), blue 25%), transparent);
   margin: 0.5rem auto;
 }
 
 .creator-tagline {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  color: var(--text-dim);
+  color: color-mix(in srgb, var(--parchment), var(--jade-bright) 15%);
   font-size: 1rem;
   letter-spacing: 0.05em;
 }
 
-/* ── Body ── */
 .creator-body {
   max-width: 860px;
   margin: 0 auto;
@@ -1200,17 +1192,18 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   gap: 4rem;
 }
 
-/* ── Section label (reuses lore pattern) ── */
 .creator-section-label {
   font-family: 'Cinzel', serif;
-  font-size: 0.72rem;
+  font-size: 1.2rem;
   letter-spacing: 0.38em;
+  font-weight: 700;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: color-mix(in srgb, var(--jade), var(--parchment) 35%);
   margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
   gap: 1rem;
+  padding-left: 10rem;
 }
 
 .creator-section-label::after {
@@ -1218,39 +1211,16 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   flex: 1;
   height: 1px;
   background: linear-gradient(90deg,
-    color-mix(in srgb, var(--gold-dim), transparent 50%),
+    color-mix(in srgb, color-mix(in srgb, var(--crimson), blue 25%), transparent 50%),
     transparent);
 }
 
-/* ── About Card ── */
 .creator-about-card {
-  display: grid;
+  display: block;
   grid-template-columns: 160px 1fr;
   gap: 2.5rem;
   align-items: flex-start;
-}
-
-.creator-about-portrait {
-  position: relative;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
-}
-
-.creator-portrait-placeholder {
-  width: 100%;
-  height: 100%;
-  background: color-mix(in srgb, var(--gold), transparent 94%);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 200px;
-}
-
-.creator-portrait-glyph {
-  font-size: 3.5rem;
-  color: var(--gold-dim);
-  opacity: 0.4;
+  padding-left: 10rem;
 }
 
 .creator-about-text {
@@ -1260,36 +1230,26 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-bio-placeholder {
   font-family: 'EB Garamond', serif;
   font-size: 1.05rem;
-  color: var(--text-dim);
-  font-style: italic;
-  line-height: 1.8;
-}
-
-/* Real bio paragraphs (non-italic, full color) */
-.creator-about-text p:not(.creator-bio-placeholder) {
-  font-family: 'EB Garamond', serif;
-  font-size: 1.05rem;
-  color: var(--text-body);
+  color: color-mix(in srgb, white, var(--jade-bright) 25%);
   line-height: 1.85;
   margin-bottom: 0.9rem;
 }
 
-/* ── Profile Link ── */
 .creator-profile-link {
   display: block;
   position: relative;
   overflow: hidden;
   text-decoration: none;
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
-  background: color-mix(in srgb, var(--gold), transparent 96%);
-  padding: 1.6rem 2rem;
+  border: 1px solid color-mix(in srgb, color-mix(in srgb, var(--jade-bright), blue 50%), transparent 55%);
+  background: color-mix(in srgb, color-mix(in srgb, var(--jade), blue 50%), transparent 96%);
+  padding: 1.15rem 2rem;
   transition: border-color 0.3s, background 0.3s, transform 0.25s;
   cursor: url('images/CursorOpen.png'), pointer;
 }
 
 .creator-profile-link:hover {
-  border-color: var(--gold-dim);
-  background: color-mix(in srgb, var(--gold), transparent 91%);
+  border-color: color-mix(in srgb, var(--crimson), blue 25%);
+  background: color-mix(in srgb, color-mix(in srgb, var(--jade-bright), blue 50%), transparent 91%);
   transform: translateY(-2px);
 }
 
@@ -1314,9 +1274,10 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-profile-name {
   font-family: 'Cinzel Decorative', serif;
   font-size: 1.5rem;
-  color: var(--gold-light);
+  color: color-mix(in srgb, var(--crimson-bright), blue 25%);
   letter-spacing: 0.05em;
   margin-bottom: 0.2rem;
+  font-weight: 700;
 }
 
 .creator-profile-sub {
@@ -1346,7 +1307,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   width: 60%; height: 100%;
   background: linear-gradient(90deg,
     transparent,
-    color-mix(in srgb, var(--gold), transparent 88%),
+    color-mix(in srgb, color-mix(in srgb, var(--crimson-bright), blue 25%), transparent 88%),
     transparent);
   transform: skewX(-20deg);
   transition: left 0.6s ease;
