@@ -25,6 +25,8 @@
   --library: url('images/Library.webp');
   --tai: url('images/Tai.webp');
   --tai-stripes: url('images/Tai-Stripes.png');
+  --chibi-tai: url('images/ChibiTai.png');
+  --mini-tai: url('images/miniTai.png');
 
   
   /*CONTROL PANEL */
@@ -1101,8 +1103,26 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
    ====================================================== */
 
 .page-content-wrapper {
-  padding-left: 28vh;
+  padding-inline: 61.5vh 18vh;
 }
+
+.taiga-button {
+  background: color-mix(in srgb, color-mix(in srgb, var(--jade), blue 50%), transparent 75%);
+  border: 1px solid color-mix(in srgb, var(--jade), transparent 75%);
+  color: color-mix(in srgb, var(--crimson-bright), blue 25%);
+  font-weight: 700;
+}
+
+.taiga-button:hover {
+  border-color: var(--jade);
+  box-shadow: 0 8px 30px color-mix(in srgb, var(--crimson-bright), blue 25%);
+  transform: scale(1.05);
+}
+
+.taiga-button::before {
+  background: linear-gradient(195deg, color-mix(in srgb, var(--crimson-bright), transparent 85%), transparent);
+}
+
 
 .creator-hero {
   position: relative;
@@ -1145,6 +1165,18 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   transform: scaleY(-1) scaleY(-1);
 }
 
+.creator-stripes-3 {
+  position: fixed;
+  top: 0;
+  left: -92px;
+  bottom: 0;
+  width: 45vh;
+  background: var(--tai-stripes) center top / auto 100vh no-repeat;
+  z-index: -2;
+  transform: scaleX(-1);
+
+}
+
 .creator-hero-content {
   position: relative;
   z-index: 2;
@@ -1154,22 +1186,17 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 }
 
 .taiga-rune {
-  color: color-mix(in srgb, var(--jade), var(--ink) 50%);
+  color: color-mix(in srgb, var(--crimson-bright), blue 25%);
 }
 
 .creator-title {
   font-family: 'Cinzel Decorative', serif;
   font-size: clamp(2rem, 5vw, 3.6rem);
   background: linear-gradient(
-    20deg,
-    color-mix(in srgb, var(--jade), white 40%) 0%,
-    color-mix(in srgb, var(--jade-bright), white 95%) 10%,
-    color-mix(in srgb, var(--jade), white 60%) 20%,
-    color-mix(in srgb, var(--jade-bright), blue 40%) 35%,
-    color-mix(in srgb, var(--jade), blue 20%) 45%,
-    color-mix(in srgb, var(--jade-bright), white 60%) 70%,
-    color-mix(in srgb, var(--jade-bright), blue 40%) 85%,
-    color-mix(in srgb, var(--jade), white 60%) 100%  );
+    20deg, 
+    color-mix(in srgb, var(--jade), blue 60%) 10%,
+    color-mix(in srgb, var(--crimson-bright), blue 25%) 57%,
+    color-mix(in srgb, var(--jade), blue 40%) 80% );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -1188,13 +1215,12 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-tagline {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  color: color-mix(in srgb, var(--parchment), var(--jade-bright) 15%);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   font-size: 1rem;
   letter-spacing: 0.05em;
 }
 
 .creator-body {
-  max-width: 860px;
   margin: 0 auto;
   padding: 3rem 2rem 7rem;
   display: flex;
@@ -1208,7 +1234,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   letter-spacing: 0.38em;
   font-weight: 700;
   text-transform: uppercase;
-  color: color-mix(in srgb, var(--jade), var(--parchment) 35%);
+  color: color-mix(in srgb, var(--jade-bright), blue 25%);
   margin-bottom: 1.4rem;
   display: flex;
   align-items: center;
@@ -1219,10 +1245,11 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-section-label::after {
   content: '';
   flex: 1;
-  height: 1px;
+  height: 4px;
   background: linear-gradient(90deg,
     color-mix(in srgb, color-mix(in srgb, var(--crimson), blue 25%), transparent 50%),
     transparent);
+  border-radius: 4px 0 0 4px;
 }
 
 .creator-about-card {
@@ -1240,7 +1267,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-bio-placeholder {
   font-family: 'EB Garamond', serif;
   font-size: 1.05rem;
-  color: color-mix(in srgb, white, var(--jade-bright) 25%);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   line-height: 1.85;
   margin-bottom: 0.9rem;
 }
@@ -1294,23 +1321,23 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   font-family: 'EB Garamond', serif;
   font-style: italic;
   font-size: 0.9rem;
-  color: var(--text-dim);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
 }
 
 .creator-profile-arrow {
   font-size: 1.8rem;
-  color: var(--gold-dim);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   opacity: 0.6;
   transition: transform 0.3s ease, opacity 0.3s;
   flex-shrink: 0;
+  transform: scale(1.5) rotate3d(0, 0, 1, -45deg);
 }
 
 .creator-profile-link:hover .creator-profile-arrow {
-  transform: translateX(5px);
-  opacity: 1;
+  transform: scale(1.5) rotate3d(0, 0, 1, -15deg) translateX(-5px);
+  opacity: 0.8;
 }
 
-/* Shimmer sweep on hover */
 .creator-profile-shimmer {
   position: absolute;
   top: 0; left: -120%;
@@ -1328,7 +1355,6 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   left: 160%;
 }
 
-/* ── Request Form ── */
 .creator-form-wrap {
   display: flex;
   flex-direction: column;
@@ -1338,8 +1364,8 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .creator-form-intro {
   font-family: 'EB Garamond', serif;
   font-style: italic;
-  color: var(--text-dim);
-  font-size: 0.98rem;
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
+  font-size: 1.2rem;
   line-height: 1.7;
 }
 
@@ -1348,8 +1374,8 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   flex-direction: column;
   gap: 1.1rem;
   padding: 2rem;
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
-  background: color-mix(in srgb, var(--gold), transparent 97%);
+  border: 1px solid color-mix(in srgb, var(--jade-bright), transparent 65%);
+  background: color-mix(in srgb, var(--jade), transparent 97%);
   mask-image: linear-gradient(to bottom, transparent, black 6%, black 90%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 6%, black 90%, transparent);
 }
@@ -1368,16 +1394,17 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 
 .creator-label {
   font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
+  font-size: 1.05rem;
   letter-spacing: 0.25em;
   text-transform: uppercase;
-  color: var(--text-dim);
+  color: color-mix(in srgb, var(--crimson-bright), blue 25%);
+  font-weight: 700;
 }
 
 .creator-input {
   background: color-mix(in srgb, var(--ink), transparent 30%);
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
-  color: var(--text-body);
+  border: 1px solid color-mix(in srgb, color-mix(in srgb, var(--jade-bright), blue 50%), transparent 55%);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   font-family: 'EB Garamond', serif;
   font-size: 1rem;
   padding: 0.6rem 0.9rem;
@@ -1389,24 +1416,51 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   appearance: none;
 }
 
-.creator-input::placeholder { color: var(--text-dim); opacity: 0.6; }
+.creator-input::placeholder { color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%); opacity: 0.6; }
 
 .creator-input:focus {
-  border-color: var(--gold-dim);
-  box-shadow: 0 0 0 2px color-mix(in srgb, var(--gold), transparent 88%);
+  border-color: color-mix(in srgb, color-mix(in srgb, var(--jade-bright), blue 50%), transparent 55%);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--crimson-bright), transparent 88%);
 }
 
 .creator-select {
   cursor: url('images/CursorOpen.png'), pointer;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%237a5c20'/%3E%3C/svg%3E");
+  background-image: var(--mini-tai);
   background-repeat: no-repeat;
-  background-position: right 0.9rem center;
-  padding-right: 2.2rem;
+  background-position: right 0.5rem center;
+  background-size: 80px auto;
+  padding-right: 0.5rem;
+}
+
+.creator-select::picker-icon {
+  display: none;
+}
+
+.creator-select,
+.creator-select::picker(select) {
+  appearance: base-select;
+}
+
+.creator-select::picker(select) {
+  background-color: var(--ink);
+  background-image: var(--chibi-tai);
+  background-position: 10% 30%;
+  background-size: 120% auto;      
+  background-repeat: no-repeat;
+  border: 1px solid var(--jade);
+  border-radius: 6px;
+  padding: 6px;
 }
 
 .creator-select option {
-  background: #1a1410;
-  color: var(--text-body);
+  padding: 12px 16px;
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
+  background: transparent; 
+}
+
+.creator-select option:hover {
+  background-color: color-mix(in srgb, color-mix( in srgb, var(--jade), blue 25%), transparent 30%); 
+  url('images/CursorOpen.png'), pointer;
 }
 
 .creator-textarea {
@@ -1440,9 +1494,9 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   display: flex;
   align-items: center;
   gap: 0.7rem;
-  background: color-mix(in srgb, var(--gold), transparent 90%);
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 45%);
-  color: var(--gold-light);
+  background: color-mix(in srgb, color-mix(in srgb, var(--jade), blue 50%), transparent 75%);
+  border: 1px solid color-mix(in srgb, var(--jade-bright), blue 50%);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   font-family: 'Cinzel', serif;
   font-size: 0.72rem;
   letter-spacing: 0.25em;
@@ -1453,21 +1507,22 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   position: relative;
   overflow: hidden;
   flex-shrink: 0;
+  font-weight: 700;
 }
 
 .creator-submit-btn::before {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, color-mix(in srgb, var(--gold-light), transparent 85%), transparent);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--jade-bright), transparent 85%), transparent);
   opacity: 0;
   transition: opacity 0.2s;
 }
 
 .creator-submit-btn:hover {
-  border-color: var(--gold);
+  border-color: color-mix(in srgb, var(--crimson-bright), blue 25%);
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px color-mix(in srgb, var(--gold-dim), transparent 60%);
+  box-shadow: 0 4px 20px color-mix(in srgb, var(--crimson-bright), blue 25%);
 }
 
 .creator-submit-btn:hover::before { opacity: 1; }
@@ -1485,19 +1540,10 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   font-family: 'EB Garamond', serif;
   font-style: italic;
   font-size: 0.85rem;
-  color: var(--text-dim);
+  color: color-mix(in srgb, var(--jade-bright), var(--parchment) 20%);
   opacity: 0.7;
   text-align: center;
   letter-spacing: 0.03em;
-}
-
-/* ── Responsive ── */
-@media (max-width: 650px) {
-  .creator-about-card { grid-template-columns: 1fr; }
-  .creator-about-portrait { max-width: 160px; }
-  .creator-field-row { grid-template-columns: 1fr; }
-  .creator-form { padding: 1.3rem; }
-  .creator-body { padding: 2rem 1.2rem 5rem; }
 }
 
 /* ======================================================
@@ -1551,6 +1597,12 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   .title-rune {
     letter-spacing: 0.3em;
   }
+
+  .creator-about-card { grid-template-columns: 1fr; }
+  .creator-about-portrait { max-width: 160px; }
+  .creator-field-row { grid-template-columns: 1fr; }
+  .creator-form { padding: 1.3rem; }
+  .creator-body { padding: 2rem 1.2rem 5rem; }
 }
 
 /* --- SMALL MOBILE PHONES (Up to 600px) --- */
