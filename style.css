@@ -1549,13 +1549,82 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
    MEDIA ADJUSTMENTS
    ====================================================== */
 
-/* --- 1. TABLETS & SMALL LAPTOPS (Up to 900px) --- */
-@media (max-width: 900px) {
+/* --- 1. TABLETS & SMALL LAPTOPS (Up to 1024px) --- */
+@media (max-width: 1024px) {
   .announce-scroll-content {
     max-width: 85%;
   }
-}
+  .creator-hero-bg {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: auto;
+    width: 65%;
+    height: 100%;
+    background-size: contain;
+    background-position: right -60px top;
+  }
 
+  .creator-stripes-3 { display: none; }
+
+  .page-content-wrapper {
+    padding-inline: 0;
+  }
+  .creator-body { 
+    padding: 0rem 2rem 7rem; 
+    gap: 1rem;
+  }
+  .creator-hero { 
+    width: 55%;
+    height: auto;
+    aspect-ratio: 1 / 1.6;
+    padding-right: 0;
+    align-items: center;
+    text-align: left;
+  }
+ .creator-stripes {
+    position: absolute; 
+    top: auto;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    background: none;
+    overflow: hidden;
+  }
+  .creator-stripes::before {
+    content: '';
+    position: absolute;
+    top: 77.1vw;
+    left: 67%;
+    width: 100vw;  
+    height: 100vw; 
+    background: var(--tai-stripes) center / cover no-repeat;
+    transform: translate(-50%, -50%) scaleY(-1) rotate(270deg);
+  }
+
+  .creator-stripes-2 {
+    position: absolute; 
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: auto;
+    height: 100%;
+    width: 100%;
+    background: none;
+    overflow: hidden;
+  }
+  .creator-stripes-2::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    width: 100vw;  
+    height: 100vw; 
+    background: var(--tai-stripes) center / cover no-repeat;
+    transform: translate(-50%, -52%) scaleX(-1) rotate(270deg);
+  }
+}
 /* --- 2. STANDARD TABLETS (Up to 768px) --- */
 @media (max-width: 768px) {
   .nav-grid {
@@ -1570,43 +1639,20 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
     background-position: center 65%;
     background-size: 200%; 
   }
-  .page-content-wrapper {
-    padding-left: 45vh; 
-    align-items: center; 
-    padding-right: 40px;
+  .creator-stripes::before {
+    top: 77.7vw;
+    width: 768px;  
+    height: 768px; 
+    transform: translate(-50%, -50%) scaleY(-1) rotate(270deg);
   }
-  .creator-hero-bg {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -60px;
-    left: auto;
-    width: 65%;
-    height: 100%;
-    background-size: contain;
-    background-position: right top;
-  }
-  .creator-stripes {
-    display: none;
-   }
-  .creator-stripes-2 {
-    display: none;
-   }
-  .creator-stripes-3 {
-    display: none;
-   }
-  .page-content-wrapper {
-    padding-inline: 0;
-  }
-  .creator-hero { 
-    width: 55%;
-    padding-right: 0;
-    align-items: center;
-    text-align: left;
+  .creator-stripes-2::before {
+    bottom: -94vw;
+    width: 768px;  
+    height: 768px; 
   }
 }
 
-/* --- 3. UNIFIED MOBILE BREAKPOINT (Up to 650px) --- */
+/* --- 3. MOBILE (Up to 650px) --- */
 @media (max-width: 650px) {
   .announce-list-grid { 
     grid-template-columns: 1fr; 
@@ -1628,7 +1674,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   .creator-form { padding: 1.3rem; }
 
   .creator-body { 
-    padding: 4.5rem 1.2rem 5rem; 
+    padding: 0rem 1.2rem 5rem; 
     gap: 1rem;
   }
 
@@ -1722,45 +1768,32 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   .lore-region-panel p { line-height: 1.3; }
 
   .creator-hero-bg {
-    display: block;
-    position: absolute;
-    top: 0;
-    right: -30px;
-    left: auto;
-    width: 65%;
-    height: 100%;
-    background-size: contain;
-    background-position: right top;
+    background-position: right -35px top;
   }
 
-  .creator-stripes {
-    position: absolute; 
-    display: block;
-    top: auto;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 90px;
-    width: 100%;
-    background: none;
-    overflow: hidden;
+  .creator-stripes { 
+    height: 85px;
   }
   .creator-stripes::before {
-    content: '';
-    position: absolute;
-    top: 50%;
+    top: 70%;
     left: 50%;
-    width: 100vh;  
-    height: 100vw; 
-    background: var(--tai-stripes) center / cover no-repeat;
+    width: 650px;  
+    height: 650px; 
     transform: translate(-50%, -50%) scaleX(-1) rotate(270deg);
   }
-  .creator-hero { 
-    width: 55%;
-    padding-right: 0;
-    align-items: center;
-    text-align: left;
+
+  .creator-stripes-2 {
+    top: auto;
+    bottom: 0;
   }
+  .creator-stripes-2::before {
+    top: 79vw;
+    bottom: auto;
+    left: 9%;
+    width: 650px;  
+    height: 650px; 
+    transform: translate(-50%, -50%) scaleY(-0.5) scaleX(-1) rotate(270deg);
+  } 
   .creator-section-label::before {
     content: '';
     flex: 1;
@@ -1793,18 +1826,3 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   }
 }
 
-/* --- 4. TALL PHONES (max 650/min 800s) --- */
-@media (max-width: 650px) and (min-height: 800px) {
-  .creator-body { 
-    padding: 2.5rem 1rem 5rem; 
-  }
-
-.creator-hero-bg {
-   background-position: 124% 0%;
-}
-
-.creator-stripes {
-   height: 80px;
-}
-
-}
