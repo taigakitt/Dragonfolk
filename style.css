@@ -1421,6 +1421,15 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   border-color: var(--jade-bright);
   box-shadow: 0 0 0 2px color-mix(in srgb, var(--crimson-bright), transparent 88%);
 }
+.creator-form,
+  .creator-label,
+  .creator-form-intro,
+  .creator-form-note {
+    cursor: url('images/CursorClosed.png'), default;
+  }
+.creator-input, .creator-textarea {
+    cursor: url('images/CursorOpen.png'), text; 
+  }
 
 .creator-select {
   cursor: url('images/CursorOpen.png'), pointer;
