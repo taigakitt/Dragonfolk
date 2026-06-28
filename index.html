@@ -442,14 +442,122 @@
 <!-- ============================================================ -->
 <div id="characters" class="page">
 
- <button class="back-btn" onclick="goBack()">
+  <button class="back-btn" onclick="goBack()">
     <span class="btn-arrow">⁀➴</span>
     <span class="btn-label">Return</span>
   </button>
 
+  <!-- ── HERO ── -->
+ <div class="char-page-hero" id="charHero">
+    <div class="char-page-hero-bg"></div>
+    <div class="char-page-hero-vignette"></div>
+    
+    <div class="hero-default-layer">
+      <div class="title-rune">✦</div>
+      <h1 class="char-page-title">Characters</h1>
+      <div class="char-page-rule"></div>
+      <p class="char-page-sub">The blood that runs through Goryūto.</p>
+    </div>
+    
+    <div class="hero-manifest-layer">
+      <div class="manifest-left">
+        <span class="manifest-crest" id="manifestCrest">✦</span>
+        <div class="manifest-title-block">
+          <h1 class="manifest-house-name" id="manifestName">House Selected</h1>
+          <p class="manifest-house-creed" id="manifestCreed">Faction creed alignment...</p>
+        </div>
+      </div>
+      <div class="manifest-right">
+        <p class="manifest-house-desc" id="manifestDesc">...</p>
+        <div class="manifest-house-traits" id="manifestTraits"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="char-house-row">
+    <button class="char-house-tab" data-house="akagi" onclick="filterHouse(this)">
+      <span class="char-house-tab-name">House Akagi</span>
+      <span class="char-house-tab-creed">Loyalty · Discipline · Tradition</span>
+    </button>
+    <button class="char-house-tab" data-house="saiwa" onclick="filterHouse(this)">
+      <span class="char-house-tab-name">House Saiwa</span>
+      <span class="char-house-tab-creed">Loyalty · Adaptability · Strategy</span>
+    </button>
+    <button class="char-house-tab" data-house="ryuhwa" onclick="filterHouse(this)">
+      <span class="char-house-tab-name">House Ryuhwa</span>
+      <span class="char-house-tab-creed">Only the Strong Thrive</span>
+    </button>
+    <button class="char-house-tab" data-house="koryuu" onclick="filterHouse(this)">House Koryuu</button>
+    <button class="char-house-tab" data-house="independent" onclick="filterHouse(this)">Independent</button>
+    <button class="char-house-tab" data-house="wyrm" onclick="filterHouse(this)">Wyrm Kin</button>
+  </div>
+
+  <div class="char-grid">
+    <div class="char-card" data-house="akagi" onclick="showPage('char-akio')">
+      <div class="char-card-img-wrap">
+        <img class="char-card-img" src="images/Akio-pfp.webp" alt="Akio Akagi">
+        <div class="char-card-scrim"></div>
+        <div class="char-card-house-pip char-pip--akagi">Akagi</div>
+      </div>
+      <div class="char-card-info">
+        <div class="char-card-name">Akio Akagi</div>
+        <div class="char-card-role">Heir · Warrior · 30</div>
+      </div>
+    </div>
+  </div> 
 
 </div>
 
+  </div> </div> <div id="char-akio" class="page char-profile-page">
+
+  <button class="back-btn" onclick="showPage('characters')">
+    <span class="btn-arrow">⁀➴</span>
+    <span class="btn-label">Roster</span>
+  </button>
+  
+  <div class="char-profile-layout">
+    
+    <div class="char-profile-hero">
+      <img class="char-profile-hero-img" src="images/Akio-pfp.webp" alt="Akio Akagi">
+      <div class="char-profile-hero-scrim"></div>
+      <div class="char-profile-hero-info">
+        <div class="char-detail-house-pip char-pip--akagi">House Akagi</div>
+        <h1 class="char-profile-display-name">Akio Akagi</h1>
+        <p class="char-profile-display-title">Heir of House Akagi</p>
+      </div>
+    </div>
+    
+    <div class="char-profile-body">
+      <div class="char-profile-scroll-content">
+        
+        <section class="char-profile-section">
+          <div class="char-detail-section-title">At a Glance</div>
+          <div class="char-detail-stat-row">
+            <div class="char-detail-stat"><span class="char-detail-stat-label">Age</span><span class="char-detail-stat-val">30</span></div>
+            <div class="char-detail-stat"><span class="char-detail-stat-label">Species</span><span class="char-detail-stat-val">Horned One</span></div>
+            <div class="char-detail-stat"><span class="char-detail-stat-label">Magic</span><span class="char-detail-stat-val">Offensive Elemental</span></div>
+            <div class="char-detail-stat"><span class="char-detail-stat-label">Role</span><span class="char-detail-stat-val">Sole Heir · Warrior</span></div>
+          </div>
+        </section>
+        
+        <section class="char-profile-section">
+          <div class="char-detail-section-title">Nature</div>
+          <p class="char-detail-para">Akio carries his loyalty like a blade — balanced, familiar, heavier than outsiders ever see...</p>
+        </section>
+        
+        <section class="char-profile-section">
+          <div class="char-detail-section-title">Traits</div>
+          <div class="char-detail-traits">
+            <span class="char-detail-trait">Disciplined</span>
+            <span class="char-detail-trait">Aloof exterior</span>
+            <span class="char-detail-trait">Quiet gentleness</span>
+          </div>
+        </section>
+        
+      </div>
+    </div>
+
+  </div> </div>
 <!-- ============================================================ -->
 <!-- CREATOR PAGE -->
 <!-- ============================================================ -->
