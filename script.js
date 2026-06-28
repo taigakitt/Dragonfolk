@@ -110,25 +110,6 @@ function toggleKeys(el, e) {
 }
 
 // === CREATOR REQUEST FORM ===
-// ─────────────────────────────────────────────────────────────
-// HOW TO WIRE THIS TO GOOGLE FORMS:
-//
-// 1. Create a Google Form with these fields (in any order):
-//      - Name / Handle
-//      - Request Type
-//      - Subject
-//      - Details
-//      - Contact (optional)
-//
-// 2. Click the ⋮ menu → "Get pre-filled link"
-//    Fill one field, copy the URL — find the "entry.XXXXXXXXX" IDs
-//
-// 3. Replace the FORM_ACTION_URL and entry IDs below with yours.
-//    The form action URL looks like:
-//    https://docs.google.com/forms/d/e/XXXXXXXXXX/formResponse
-//
-// 4. That's it — submissions go straight to your linked spreadsheet.
-// ─────────────────────────────────────────────────────────────
 
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeAyv9hzRUvk9A_78QV3YVxxTEliU_Ms5pzjJsGZ8fRp-MfKQ/formResponse';
 
@@ -149,14 +130,12 @@ function submitRequest() {
   const status  = document.getElementById('formStatus');
   const btn     = document.querySelector('.creator-submit-btn');
 
-  // Basic validation
   if (!name || !type || !subject || !body) {
     status.textContent = 'Please fill in all required fields.';
     status.className = 'creator-form-status error';
     return;
   }
 
-  // Build form data
   const data = new FormData();
   data.append(FORM_FIELDS.name,    name);
   data.append(FORM_FIELDS.type,    type);
@@ -164,14 +143,11 @@ function submitRequest() {
   data.append(FORM_FIELDS.body,    body);
   data.append(FORM_FIELDS.contact, contact);
 
-  // Disable while sending
   btn.disabled = true;
   btn.style.opacity = '0.6';
   status.textContent = 'Sending...';
   status.className = 'creator-form-status';
 
-  // Google Forms uses no-cors so we can't read the response —
-  // we just fire and assume success if it doesn't throw.
   fetch(GOOGLE_FORM_URL, {
     method: 'POST',
     mode: 'no-cors',
@@ -196,4 +172,74 @@ function submitRequest() {
     btn.disabled = false;
     btn.style.opacity = '';
   });
+}
+
+
+// === CHARACTERS PAGE ===
+/*==========================================================
+    FACTION ARCHIVE CANOPY DATABASE
+==========================================================*/
+const FACTION_MANIFESTVS = {
+  akagi: {
+    name: "House Akagi", crest: "火", creed: "Loyalty · Discipline · Tradition",
+    desc: "Tanned skin, red horns, masters of offensive elemental magic. Loyalty is not blind here — it is chosen and renewed in every action. The sole heir carries the full weight of a House that is revered but carefully watched.",
+    traits: ["Offensive Magic", "Tanned Skin", "Red Horns", "Sole Heir Line"], color: "#e05050"
+  },
+  saiwa: {
+    name: "House Saiwa", crest: "盾", creed: "Loyalty · Adaptability · Strategy",
+    desc: "Pale skin, black horns, masters of defensive magic. They bend rather than break. Lord Kenji's calm authority and Lady Sayuri's cold resolve produced five heirs — each expected to be a weapon. The last arrived too soft for any of it.",
+    traits: ["Defensive Matrix", "Pale Skin", "Black Horns", "Five Heirs"], color: "#6090d0"
+  },
+  ryuhwa: {
+    name: "House Ryuhwa", crest: "強", creed: "Only the Strong Thrive",
+    desc: "Deep brown skin, white horns, masters of support magic that curdles into necromancy. Heirs rise by breaking their Lord. Lord Jinwoo broke his father in judgment, not anger. His daughter returned from a decade away wearing the same eyes.",
+    traits: ["Necromantic Support", "Brown Skin", "White Horns", "Blood Succession"], color: "#9a70d0"
+  },
+  koryuu: {
+    name: "Koryuu-gyeong", crest: "獄", creed: "The Imperial Capital Province",
+    desc: "The imperial capital — once the undisputed cultural heart of Goryūto, now feeling its dominance slip. Those who serve it do so with rigid authority and a growing dread that what they protect is already fading.",
+    traits: ["Prison Systems", "Rigid Order", "Imperial Guard"], color: "#607088"
+  },
+  independent: {
+    name: "Independent", crest: "✦", creed: "Bound to No Provincial Throne",
+    desc: "Those who answer to no House — wanderers, rogue captains of the Driftcrag Isles, and clifftop seers operating in the secret spaces the high court provincial crowns cannot reach.",
+    traits: ["Unclaimed Blood", "Self-Determined", "Isles Rogue"], color: "#c9a84c"
+  },
+  wyrm: {
+    name: "Wyrm Kin", crest: "爪", creed: "The Marginalized Fringe Caste",
+    desc: "Digitigrade legs, bestial profiles, called wyrm as a slur. The lowest rung of the continent's hierarchy — feared for their raw, primitive biology and denied the spaces Horned Ones move through freely.",
+    traits: ["Shattered Caste", "Digitigrade Legs", "Bestial Magic"], color: "#50b880"
+  }
+};
+
+// === CORE REPLACEMENT FILTER ENGINE ===
+function filterHouse(btn) {
+  document.querySelectorAll('.char-house-tab').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const house = btn.dataset.house;
+  const hero = document.getElementById('charHero');
+
+  // Filter visibility states across vertical profile cards
+  document.querySelectorAll('.char-card').forEach(card => {
+    const match = house === 'all' || card.dataset.house === house;
+    card.classList.toggle('char-hidden', !match);
+  });
+
+  // 🎯 THE INTERFACE EXCHANGE ROUTINE: 
+  // If a house is targeted, fill the header database slots. If "all", switch back to default title!
+  const manifest = FACTION_MANIFESTVS[house];
+  if (manifest && hero) {
+    document.getElementById('manifestCrest').textContent = manifest.crest;
+    document.getElementById('manifestName').textContent = manifest.name;
+    document.getElementById('manifestCreed').textContent = manifest.creed;
+    document.getElementById('manifestDesc').textContent = manifest.desc;
+    document.getElementById('manifestTraits').innerHTML = manifest.traits.map(t => `<span class="manifest-trait-pill">${t}</span>`).join('');
+    
+    // Inject custom colors down to CSS context variables
+    hero.style.setProperty('--dynamic-house-color', manifest.color);
+    hero.classList.add('active-mode');
+  } else {
+    if (hero) hero.classList.remove('active-mode');
+  }
 }
