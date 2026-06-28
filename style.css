@@ -28,9 +28,6 @@
   --tai-stripes: url('images/Tai-Stripes.png');
   --chibi-tai: url('images/ChibiTai.png');
   --mini-tai: url('images/miniTai.png');
-
-  /* CHARACTER IMAGES */
-  --akio-pfp: url('images/Akio-pfp.png')
   
   /*CONTROL PANEL */
   --particle-count: 25;
@@ -1108,16 +1105,69 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
    CHARACTERS PAGE
    ====================================================== */
 
-/* ── Hero ── */
 .char-page-hero {
   position: relative;
-  min-height: 32vh;
+  min-height: 35vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 4.5rem;
+  overflow: hidden;
+  transition: border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.hero-default-layer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  overflow: hidden;
+  text-align: center;
+  width: 100%;
+  z-index: 2;
+  transition: 
+    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
+
+.hero-manifest-layer {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+  opacity: 0;
+  transform: translateY(15px);
+  pointer-events: none;
+  position: absolute;
+  z-index: 3;
+  text-align: left;
+  transition: 
+    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
+    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.char-page-hero.active-mode .hero-default-layer {
+  opacity: 0;
+  transform: translateY(-15px);
+  pointer-events: none;
+  position: absolute;
+}
+
+.char-page-hero.active-mode .hero-manifest-layer {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  position: relative;
+}
+
+/* Inner Faction Text Layout Parameters */
+.manifest-left { display: flex; align-items: center; gap: 1.5rem; }
+.manifest-crest { font-family: 'Cinzel Decorative', serif; font-size: 3.5rem; color: var(--dynamic-house-color, var(--gold-light)); filter: drop-shadow(0 0 15px var(--dynamic-house-color)); line-height: 1; }
+.manifest-house-name { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; color: #fff; letter-spacing: 0.05em; line-height: 1.1; }
+.manifest-house-creed { font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.95rem; color: var(--dynamic-house-color, var(--text-dim)); }
+.manifest-house-desc { font-size: 0.95rem; line-height: 1.7; color: var(--text-body); margin-bottom: 0.6rem; }
+.manifest-house-traits { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.manifest-trait-pill { font-family: 'Cinzel', serif; font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dynamic-house-color); padding: 0.15rem 0.55rem; border: 1px solid color-mix(in srgb, var(--dynamic-house-color), transparent 60%); background: color-mix(in srgb, var(--dynamic-house-color), transparent 94%); }
 
 .char-page-hero-bg {
   position: absolute;
@@ -1335,8 +1385,9 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   background: color-mix(in srgb, var(--gold), transparent 94%);
 }
 
+
 /* ── Character Grid ── */
-.char-grid-wrap {
+.char-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
   gap: 1px;
@@ -1441,86 +1492,6 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 }
 
 /* ── Character Detail Overlay ── */
-dialog.char-detail-panel {
-  position: fixed;
-  top: 0;
-  right: 0;
-  left: auto; /* Aligns panel directly to the right side of the screen */
-  margin: 0;
-  width: min(520px, 95vw);
-  height: 100vh;
-  max-height: 100vh;
-  background: color-mix(in srgb, var(--smoke), var(--ink) 40%);
-  border: none;
-  border-left: 1px solid color-mix(in srgb, var(--gold-dim), transparent 60%);
-  overflow-y: auto;
-  color: var(--text-body);
-}
-
-dialog.char-detail-panel::backdrop {
-  background: rgba(9, 8, 12, 0.85);
-  backdrop-filter: blur(6px);
-}/* Detail panel content */
-.char-detail-hero {
-  position: relative;
-  height: 55vh;
-  overflow: hidden;
-}
-
-.char-detail-hero-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  filter: brightness(0.75) saturate(0.9);
-}
-
-.char-detail-hero-scrim {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top,
-    var(--ink) 0%,
-    rgba(9,8,12,0.4) 50%,
-    transparent 100%);
-}
-
-.char-detail-hero-info {
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  padding: 1.5rem 1.8rem 1.2rem;
-}
-
-.char-detail-house-pip {
-  font-family: 'Cinzel', serif;
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  margin-bottom: 0.3rem;
-}
-
-.char-detail-name {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(1.4rem, 4vw, 2rem);
-  color: var(--parchment);
-  line-height: 1.1;
-  margin-bottom: 0.2rem;
-}
-
-.char-detail-title {
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
-  color: var(--gold);
-  font-size: 0.95rem;
-}
-
-.char-detail-body {
-  padding: 1.5rem 1.8rem 3rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.4rem;
-}
-
 .char-detail-section-title {
   font-family: 'Cinzel', serif;
   font-size: 0.65rem;
@@ -1582,6 +1553,89 @@ dialog.char-detail-panel::backdrop {
   background: color-mix(in srgb, var(--gold), transparent 94%);
 }
 
+/* ======================================================
+   FULL SCREEN CHARACTER PROFILE SYSTEM
+   ====================================================== */
+.char-profile-layout {
+  display: grid;
+  grid-template-columns: 45vw 1fr; /* 45% Artwork, 55% Lore Text split */
+  min-height: 100vh;
+  width: 100%;
+}
+
+.char-profile-hero {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  border-right: 1px solid color-mix(in srgb, var(--gold-dim), transparent 70%);
+}
+
+.char-profile-hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+}
+
+.char-profile-hero-scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, var(--ink) 0%, rgba(13,10,8,0.3) 50%, transparent 100%);
+}
+
+.char-profile-hero-info {
+  position: absolute;
+  bottom: 0;
+  left: 0; right: 0;
+  padding: 4rem 3rem 3rem;
+}
+
+.char-profile-display-name {
+  font-family: 'Cinzel Decorative', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  color: var(--parchment);
+  line-height: 1.1;
+  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.8));
+}
+
+.char-profile-display-title {
+  font-family: 'EB Garamond', serif;
+  font-style: italic;
+  color: var(--gold);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+}
+
+.char-profile-body {
+  height: 100vh;
+  overflow-y: auto;
+  background: linear-gradient(135deg, var(--smoke), var(--ink));
+  padding: 10vh 10% 8vh;
+}
+
+.char-profile-scroll-content {
+  max-width: 650px;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+/* Responsive Mobile Stacking rules */
+@media (max-width: 900px) {
+  .char-profile-layout {
+    grid-template-columns: 1fr; /* Stacks artwork on top of text on tablets/phones */
+  }
+  .char-profile-hero {
+    height: 55vh;
+    border-right: none;
+    border-bottom: 1px solid color-mix(in srgb, var(--gold-dim), transparent 70%);
+  }
+  .char-profile-body {
+    height: auto;
+    padding: 3rem 1.5rem 6rem;
+  }
+}
 
 /* ======================================================
    CREATOR PAGE
