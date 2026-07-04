@@ -447,8 +447,7 @@
     <span class="btn-label">Return</span>
   </button>
 
-  <!-- ── HERO ── -->
- <div class="char-page-hero" id="charHero">
+  <div class="char-page-hero" id="charHero">
     <div class="char-page-hero-bg"></div>
     <div class="char-page-hero-vignette"></div>
     
@@ -474,41 +473,317 @@
     </div>
   </div>
 
-  <div class="char-house-row">
-    <button class="char-house-tab" data-house="akagi" onclick="filterHouse(this)">
-      <span class="char-house-tab-name">House Akagi</span>
-      <span class="char-house-tab-creed">Loyalty · Discipline · Tradition</span>
-    </button>
-    <button class="char-house-tab" data-house="saiwa" onclick="filterHouse(this)">
-      <span class="char-house-tab-name">House Saiwa</span>
-      <span class="char-house-tab-creed">Loyalty · Adaptability · Strategy</span>
-    </button>
-    <button class="char-house-tab" data-house="ryuhwa" onclick="filterHouse(this)">
-      <span class="char-house-tab-name">House Ryuhwa</span>
-      <span class="char-house-tab-creed">Only the Strong Thrive</span>
-    </button>
-    <button class="char-house-tab" data-house="koryuu" onclick="filterHouse(this)">House Koryuu</button>
-    <button class="char-house-tab" data-house="independent" onclick="filterHouse(this)">Independent</button>
-    <button class="char-house-tab" data-house="wyrm" onclick="filterHouse(this)">Wyrm Kin</button>
-  </div>
+<div class="char-faction-bars">
 
-  <div class="char-grid">
-    <div class="char-card" data-house="akagi" onclick="showPage('char-akio')">
-      <div class="char-card-img-wrap">
-        <img class="char-card-img" src="images/Akio-pfp.webp" alt="Akio Akagi">
-        <div class="char-card-scrim"></div>
-        <div class="char-card-house-pip char-pip--akagi">Akagi</div>
+    <div class="slat" data-house="akagi" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">火</span>
+        <span class="source-name">House Akagi</span>
+        <span class="source-creed">Loyalty · Discipline · Tradition</span>
+        <p class="source-desc">Tanned skin, red horns, masters of offensive elemental magic. Loyalty is not blind here — it is chosen and renewed in every action. The sole heir carries the full weight of a House that is revered but carefully watched.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Offensive Magic</span>
+          <span class="manifest-trait-pill">Tanned Skin</span>
+          <span class="manifest-trait-pill">Red Horns</span>
+          <span class="manifest-trait-pill">Sole Heir Line</span>
+        </div>
       </div>
-      <div class="char-card-info">
-        <div class="char-card-name">Akio Akagi</div>
-        <div class="char-card-role">Heir · Warrior · 30</div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Akagi</div>
+        <span class="slat-crest">火</span>
+        <span class="slat-name">House Akagi</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">Loyalty · Discipline · Tradition</span>
+        <span class="slat-count">1 character</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-akio')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Akio-pfp.webp" alt="Akio Akagi">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Akio Akagi</div>
+                <div class="film-card-role">Heir · Warrior · 30</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
       </div>
     </div>
-  </div> 
 
-</div>
+    <div class="slat" data-house="saiwa" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">盾</span>
+        <span class="source-name">House Saiwa</span>
+        <span class="source-creed">Loyalty · Adaptability · Strategy</span>
+        <p class="source-desc">Pale skin, black horns, masters of defensive magic. They bend rather than break. Lord Kenji's calm authority and Lady Sayuri's cold resolve produced five heirs — each expected to be a weapon. The last arrived too soft for any of it.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Defensive Matrix</span>
+          <span class="manifest-trait-pill">Pale Skin</span>
+          <span class="manifest-trait-pill">Black Horns</span>
+          <span class="manifest-trait-pill">Five Heirs</span>
+        </div>
+      </div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Saiwa</div>
+        <span class="slat-crest">盾</span>
+        <span class="slat-name">House Saiwa</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">Loyalty · Adaptability · Strategy</span>
+        <span class="slat-count">2 characters</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-yo')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Yo.webp" alt="Yo Saiwa">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Yo Saiwa</div>
+                <div class="film-card-role">Fifth Heiress · 25</div>
+              </div>
+            </div>
+            <div class="film-card" onclick="showPage('char-jungmi')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/JungMi.webp" alt="Jung-Mi Saiwa">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Jung-Mi Saiwa</div>
+                <div class="film-card-role">Eldest Heiress · 35</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
+      </div>
+    </div>
 
-  </div> </div> <div id="char-akio" class="page char-profile-page">
+    <div class="slat" data-house="ryuhwa" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">強</span>
+        <span class="source-name">House Ryuhwa</span>
+        <span class="source-creed">Only the Strong Thrive</span>
+        <p class="source-desc">Deep brown skin, white horns, masters of support magic that curdles into necromancy. Heirs rise by breaking their Lord. Lord Jinwoo broke his father in judgment, not anger. His daughter returned from a decade away wearing the same eyes.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Necromantic Support</span>
+          <span class="manifest-trait-pill">Brown Skin</span>
+          <span class="manifest-trait-pill">White Horns</span>
+          <span class="manifest-trait-pill">Blood Succession</span>
+        </div>
+      </div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Ryuhwa</div>
+        <span class="slat-crest">強</span>
+        <span class="slat-name">House Ryuhwa</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">Only the Strong Thrive</span>
+        <span class="slat-count">2 characters</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-sumi')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Sumi.webp" alt="Sumi Ryuhwa">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Sumi Ryuhwa</div>
+                <div class="film-card-role">Wildcat Heiress · 27</div>
+              </div>
+            </div>
+            <div class="film-card" onclick="showPage('char-jinwoo')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Jinwoo.webp" alt="Jinwoo Ryuhwa">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Jinwoo Ryuhwa</div>
+                <div class="film-card-role">Lord · 54</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slat" data-house="koryuu" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">獄</span>
+        <span class="source-name">Koryuu-Gyeong</span>
+        <span class="source-creed">The Imperial Capital Province</span>
+        <p class="source-desc">The imperial capital — once the undisputed cultural heart of Goryūto, now feeling its dominance slip. Those who serve it do so with rigid authority and a growing dread that what they protect is already fading.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Prison Systems</span>
+          <span class="manifest-trait-pill">Rigid Order</span>
+          <span class="manifest-trait-pill">Imperial Guard</span>
+        </div>
+      </div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Koryuu</div>
+        <span class="slat-crest">獄</span>
+        <span class="slat-name">Koryuu-Gyeong</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">The Imperial Capital</span>
+        <span class="slat-count">1 character</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-seiren')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Seiren.webp" alt="Seiren Koryuu">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Seiren Koryuu</div>
+                <div class="film-card-role">Prison Warden · 38</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slat" data-house="independent" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">✦</span>
+        <span class="source-name">Independent</span>
+        <span class="source-creed">Bound to No Provincial Throne</span>
+        <p class="source-desc">Those who answer to no House — wanderers, rogue captains of the Driftcrag Isles, and clifftop seers operating in the secret spaces the high court provincial crowns cannot reach.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Unclaimed Blood</span>
+          <span class="manifest-trait-pill">Self-Determined</span>
+          <span class="manifest-trait-pill">Isles Rogue</span>
+        </div>
+      </div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Independent</div>
+        <span class="slat-crest">✦</span>
+        <span class="slat-name">Independent</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">Bound to no House</span>
+        <span class="slat-count">1 character</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-otsuru')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Otsuru.webp" alt="Otsuru Ryukaze">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Otsuru Ryukaze</div>
+                <div class="film-card-role">The Whispering Scale · 213</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="slat" data-house="wyrm" onclick="filterHouse(this)">
+      <div class="slat-lore-source" style="display: none;">
+        <span class="source-crest">爪</span>
+        <span class="source-name">Wyrm Kin</span>
+        <span class="source-creed">The Marginalized Fringe Caste</span>
+        <p class="source-desc">Digitigrade legs, bestial profiles, called wyrm as a slur. The lowest rung of the continent's hierarchy — feared for their raw, primitive biology and denied the spaces Horned Ones move through freely.</p>
+        <div class="source-traits">
+          <span class="manifest-trait-pill">Shattered Caste</span>
+          <span class="manifest-trait-pill">Digitigrade Legs</span>
+          <span class="manifest-trait-pill">Bestial Magic</span>
+        </div>
+      </div>
+      <div class="slat-bg"></div>
+      <div class="slat-edge"></div>
+      <div class="slat-header">
+        <div class="slat-bg-name">Wyrm Kin</div>
+        <span class="slat-crest">爪</span>
+        <span class="slat-name">Wyrm Kin</span>
+        <div class="slat-header-div"></div>
+        <span class="slat-creed">The Marginalized</span>
+        <span class="slat-count">3 characters</span>
+        <span class="slat-indicator"></span>
+      </div>
+      <div class="slat-body">
+        <div class="slat-strip-wrap">
+          <div class="slat-filmstrip">
+            <div class="film-card" onclick="showPage('char-isahi')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Isahi.webp" alt="Isahi">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Isahi</div>
+                <div class="film-card-role">Hermit · 34</div>
+              </div>
+            </div>
+            <div class="film-card" onclick="showPage('char-tuyliin')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Tuyliin.webp" alt="Tuyliin">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Tuyliin</div>
+                <div class="film-card-role">The Frozen · 213</div>
+              </div>
+            </div>
+            <div class="film-card" onclick="showPage('char-heora')">
+              <div class="film-card-seal"></div>
+              <div class="char-card-img-wrap">
+                <img class="film-card-img" src="images/Heora.webp" alt="Heo-ra">
+                <div class="char-card-scrim"></div>
+              </div>
+              <div class="film-card-info">
+                <div class="film-card-name">Heo-ra</div>
+                <div class="film-card-role">Desert Wanderer · 28</div>
+              </div>
+            </div>
+          </div>
+          <div class="slat-drag-hint">← drag →</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  </div>
+<div id="char-akio" class="page char-profile-page">
 
   <button class="back-btn" onclick="showPage('characters')">
     <span class="btn-arrow">⁀➴</span>
@@ -516,7 +791,6 @@
   </button>
   
   <div class="char-profile-layout">
-    
     <div class="char-profile-hero">
       <img class="char-profile-hero-img" src="images/Akio-pfp.webp" alt="Akio Akagi">
       <div class="char-profile-hero-scrim"></div>
@@ -529,7 +803,6 @@
     
     <div class="char-profile-body">
       <div class="char-profile-scroll-content">
-        
         <section class="char-profile-section">
           <div class="char-detail-section-title">At a Glance</div>
           <div class="char-detail-stat-row">
@@ -553,11 +826,11 @@
             <span class="char-detail-trait">Quiet gentleness</span>
           </div>
         </section>
-        
       </div>
     </div>
+  </div> 
+</div>
 
-  </div> </div>
 <!-- ============================================================ -->
 <!-- CREATOR PAGE -->
 <!-- ============================================================ -->
