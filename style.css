@@ -15,6 +15,12 @@
   --smoke: #1a1410;
   --text-body: #d4c4a8;
   --text-dim: #8a7a62;
+  --akagi-color:  #c0402a;
+  --saiwa-color:  #3a6aaa;
+  --ryuhwa-color: #7a44cc;
+  --koryuu-color: #607088;
+  --indep-color:  #a8822a;
+  --wyrm-color:   #2a7a4a;
 
   /* MUSIC */
   --theme-song-id: "o-WhM-0dWeE";
@@ -796,7 +802,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   text-shadow:
     0 -1px 0 color-mix(in srgb, var(--crimson), transparent 0%),
     0 2px 3px color-mix(in srgb, var(--ink), transparent 0%),
-    0 0 18px color-mix(in srgb, var(--crimson-bight), transparent 0%);
+    0 0 18px color-mix(in srgb, var(--crimson-bright), transparent 0%);
   letter-spacing: 0.05em;
   line-height: 1.15;
   margin-bottom: 1vh;
@@ -1104,7 +1110,9 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 /* ======================================================
    CHARACTERS PAGE
    ====================================================== */
-
+/* ==========================================================
+   THE MORPHING HERO CANOPY (ORIGINAL STRUCTURE)
+========================================================== */
 .char-page-hero {
   position: relative;
   min-height: 35vh;
@@ -1116,6 +1124,26 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   transition: border-color 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
+.char-page-hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse at 25% 55%, color-mix(in srgb, var(--crimson), transparent 55%) 0%, transparent 50%),
+    radial-gradient(ellipse at 75% 40%, color-mix(in srgb, var(--gold-dim), transparent 50%) 0%, transparent 50%),
+    radial-gradient(ellipse at 50% 90%, color-mix(in srgb, var(--jade), transparent 65%) 0%, transparent 45%),
+    linear-gradient(170deg, #0b0a10 0%, #090810 100%);
+}
+
+/* ── 🎯 RESTORED VIGNETTE LAYER ── */
+.char-page-hero-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgba(9,8,12,0.25) 0%, rgba(9,8,12,0.55) 65%, var(--ink) 100%);
+  pointer-events: none;
+}
+
 .hero-default-layer {
   display: flex;
   flex-direction: column;
@@ -1123,9 +1151,7 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   text-align: center;
   width: 100%;
   z-index: 2;
-  transition: 
-    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .hero-manifest-layer {
@@ -1135,15 +1161,13 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   gap: 4rem;
   width: 100%;
   max-width: 1200px;
+  text-align: left;
+  position: absolute;
+  z-index: 3;
   opacity: 0;
   transform: translateY(15px);
   pointer-events: none;
-  position: absolute;
-  z-index: 3;
-  text-align: left;
-  transition: 
-    opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), 
-    transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .char-page-hero.active-mode .hero-default-layer {
@@ -1160,7 +1184,6 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   position: relative;
 }
 
-/* Inner Faction Text Layout Parameters */
 .manifest-left { display: flex; align-items: center; gap: 1.5rem; }
 .manifest-crest { font-family: 'Cinzel Decorative', serif; font-size: 3.5rem; color: var(--dynamic-house-color, var(--gold-light)); filter: drop-shadow(0 0 15px var(--dynamic-house-color)); line-height: 1; }
 .manifest-house-name { font-family: 'Cinzel Decorative', serif; font-size: 1.6rem; color: #fff; letter-spacing: 0.05em; line-height: 1.1; }
@@ -1169,396 +1192,260 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
 .manifest-house-traits { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .manifest-trait-pill { font-family: 'Cinzel', serif; font-size: 0.54rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dynamic-house-color); padding: 0.15rem 0.55rem; border: 1px solid color-mix(in srgb, var(--dynamic-house-color), transparent 60%); background: color-mix(in srgb, var(--dynamic-house-color), transparent 94%); }
 
-.char-page-hero-bg {
-  position: absolute;
-  inset: 0;
-  background:
-    radial-gradient(ellipse at 25% 55%, color-mix(in srgb, var(--crimson), transparent 55%) 0%, transparent 50%),
-    radial-gradient(ellipse at 75% 40%, color-mix(in srgb, var(--gold-dim), transparent 50%) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 90%, color-mix(in srgb, var(--jade), transparent 65%) 0%, transparent 45%),
-    linear-gradient(170deg, #0b0a10 0%, #090810 100%);
-  /* SWAP for image:  background: url('images/CharsBG.webp') center/cover no-repeat; */
-}
-
-.char-page-hero-vignette {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom,
-    rgba(9,8,12,0.25) 0%,
-    rgba(9,8,12,0.55) 65%,
-    var(--ink) 100%);
-}
-
-.char-page-hero-content {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  padding: 4rem 2rem 2.5rem;
-  animation: fadeUp 1s ease both;
-}
-
 .char-page-title {
   font-family: 'Cinzel Decorative', serif;
-  font-size: clamp(2rem, 5vw, 3.6rem);
+  font-size: clamp(2.5rem, 6vw, 4.2rem);
   background: linear-gradient(
-    20deg,
-    color-mix(in srgb, var(--gold-dim), white 60%) 0%,
-    color-mix(in srgb, var(--gold), white 95%) 10%,
-    color-mix(in srgb, var(--gold), white 60%) 20%,
-    color-mix(in srgb, var(--gold), var(--ink) 50%) 35%,
-    var(--gold) 45%,
-    color-mix(in srgb, var(--gold-dim), white 60%) 70%,
-    var(--gold) 85%,
-    color-mix(in srgb, var(--gold), white 60%) 100%
+    160deg,
+    color-mix(in srgb, var(--gold-dim), white 50%) 0%,
+    var(--gold-light) 18%,
+    var(--gold) 35%,
+    color-mix(in srgb, var(--gold), var(--ink) 30%) 50%,
+    var(--gold) 65%,
+    var(--gold-light) 82%,
+    color-mix(in srgb, var(--gold-dim), white 40%) 100%
   );
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: brightness(1.2) drop-shadow(0 2px 8px rgba(0,0,0,0.7));
-  letter-spacing: 0.07em;
-  margin-bottom: 0.4rem;
+  filter: drop-shadow(0 4px 24px rgba(201, 168, 76, 0.25));
+  letter-spacing: 0.1em;
+  line-height: 1;
+  margin-bottom: 0.6rem;
 }
 
 .char-page-rule {
-  width: 140px;
+  width: 200px;
   height: 1px;
   background: linear-gradient(90deg, transparent, var(--gold-dim), transparent);
-  margin: 0.5rem auto;
+  margin: 0 auto 0.8rem;
 }
 
 .char-page-sub {
   font-family: 'EB Garamond', serif;
   font-style: italic;
   color: var(--text-dim);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  letter-spacing: 0.06em;
 }
 
-/* ── House Filter Tabs ── */
-.char-house-row {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 0;
-  border-top: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
-  border-bottom: 1px solid color-mix(in srgb, var(--gold-dim), transparent 65%);
-  background: color-mix(in srgb, var(--smoke), transparent 40%);
-  backdrop-filter: blur(8px);
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-
-.char-house-tab {
-  font-family: 'Cinzel', serif;
-  font-size: 0.68rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-  background: transparent;
-  border: none;
-  border-right: 1px solid color-mix(in srgb, var(--gold-dim), transparent 75%);
-  padding: 0.9rem 1.4rem;
-  cursor: url('images/CursorOpen.png'), pointer;
-  transition: all 0.2s ease;
+/* ==========================================================
+   THE STRATIFIED NAV SLAT WALL
+========================================================== */
+.char-faction-bars {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.15rem;
-  position: relative;
-}
-
-.char-house-tab::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  height: 2px;
-  background: var(--tab-accent, var(--gold));
-  transform: scaleX(0);
-  transition: transform 0.25s ease;
-}
-
-.char-house-tab:hover { color: var(--gold-light); }
-.char-house-tab:hover::after { transform: scaleX(0.6); }
-
-.char-house-tab.active {
-  color: var(--gold-light);
-  background: color-mix(in srgb, var(--gold), transparent 94%);
-}
-.char-house-tab.active::after { transform: scaleX(1); }
-
-/* Per-house accent colors */
-.char-house-tab[data-house="akagi"]      { --tab-accent: #e05050; }
-.char-house-tab[data-house="saiwa"]      { --tab-accent: #6090d0; }
-.char-house-tab[data-house="ryuhwa"]     { --tab-accent: #9a70d0; }
-.char-house-tab[data-house="independent"]{ --tab-accent: var(--gold); }
-.char-house-tab[data-house="wyrm"]       { --tab-accent: #50b880; }
-
-.char-house-tab-name {
-  display: block;
-  font-size: 0.68rem;
-}
-
-.char-house-tab-creed {
-  display: block;
-  font-size: 0.52rem;
-  letter-spacing: 0.15em;
-  opacity: 0.55;
-  font-family: 'EB Garamond', serif;
-  font-style: italic;
-  text-transform: none;
-}
-
-/* ── House Lore Panel ── */
-.char-house-lore {
-  overflow: hidden;
-  max-height: 0;
-  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.char-house-lore.open {
-  max-height: 300px;
-}
-
-.char-house-lore-panel {
-  padding: 0;
-}
-
-.char-house-lore-panel.hidden { display: none; }
-
-.char-house-lore-inner {
-  display: flex;
-  align-items: flex-start;
-  gap: 2rem;
-  padding: 1.8rem 3rem;
-  max-width: 900px;
-  margin: 0 auto;
-  animation: fadeUp 0.4s ease both;
-}
-
-.char-house-crest {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 3rem;
-  flex-shrink: 0;
-  width: 70px;
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid;
-  opacity: 0.7;
-}
-
-.char-house-crest--akagi     { color: #e05050; border-color: rgba(224,80,80,0.35); }
-.char-house-crest--saiwa     { color: #6090d0; border-color: rgba(96,144,208,0.35); }
-.char-house-crest--ryuhwa    { color: #9a70d0; border-color: rgba(154,112,208,0.35); }
-
-.char-house-lore-name {
-  font-family: 'Cinzel Decorative', serif;
-  font-size: 1.3rem;
-  color: var(--gold-light);
-  margin-bottom: 0.4rem;
-}
-
-.char-house-lore-desc {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.95rem;
-  color: var(--text-body);
-  line-height: 1.75;
-  margin-bottom: 0.8rem;
-}
-
-.char-house-lore-traits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
-
-.char-house-trait {
-  font-family: 'Cinzel', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
-  color: var(--gold-dim);
-  background: color-mix(in srgb, var(--gold), transparent 94%);
-}
-
-
-/* ── Character Grid ── */
-.char-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
-  gap: 1px;
-  background: color-mix(in srgb, var(--gold-dim), transparent 80%);
-  border-top: 1px solid color-mix(in srgb, var(--gold-dim), transparent 75%);
-}
-
-.char-card {
-  background: var(--ink);
-  position: relative;
-  overflow: hidden;
-  cursor: url('images/CursorOpen.png'), pointer;
-  aspect-ratio: 3/4;
-  transition: z-index 0s;
-}
-
-.char-card-img-wrap {
-  position: absolute;
-  inset: 0;
-}
-
-.char-card-img {
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: top center;
-  filter: brightness(0.82) saturate(0.88);
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              filter 0.4s ease;
+  background: var(--ink);
 }
 
-.char-card:hover .char-card-img {
-  transform: scale(1.07);
-  filter: brightness(1) saturate(1.05);
+.slat {
+  position: relative;
+  overflow: hidden;
+  height: 72px; 
+  border-top: 1px solid rgba(255,255,255,0.03);
+  cursor: url('images/CursorOpen.png'), pointer;
+  isolation: isolate;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  transition: height 0.6s cubic-bezier(0.16, 1, 0.3, 1), background 0.4s ease, opacity 0.3s ease;
 }
 
-.char-card-scrim {
+.slat[data-house="akagi"]       { --house-color: var(--akagi-color); }
+.slat[data-house="saiwa"]       { --house-color: var(--saiwa-color); }
+.slat[data-house="ryuhwa"]      { --house-color: var(--ryuhwa-color); }
+.slat[data-house="koryuu"]      { --house-color: var(--koryuu-color); }
+.slat[data-house="independent"] { --house-color: var(--indep-color); }
+.slat[data-house="wyrm"]        { --house-color: var(--wyrm-color); }
+
+.slat-bg {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(to top,
-    rgba(9,8,12,0.92) 0%,
-    rgba(9,8,12,0.4) 40%,
-    transparent 70%);
-  transition: background 0.3s;
+  top: 0; left: 0; width: 100%; height: 72px;
+  background: var(--house-color);
+  opacity: 0.08;
+  z-index: 0;
+  transition: opacity 0.3s ease;
+}
+.slat:hover .slat-bg { opacity: 0.16; }
+.slat.active .slat-bg { opacity: 0.04; }
+
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active) { opacity: 0.4; }
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active):hover { opacity: 0.85; }
+
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active) .slat-bg-name,
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active) .slat-creed,
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active) .slat-header-div,
+.char-page-hero.active-mode + .char-faction-bars .slat:not(.active) .slat-count {
+  opacity: 0 !important;
+  pointer-events: none;
 }
 
-.char-card:hover .char-card-scrim {
-  background: linear-gradient(to top,
-    rgba(9,8,12,0.85) 0%,
-    rgba(9,8,12,0.25) 40%,
-    transparent 70%);
-}
-
-/* House pip (top-right badge) */
-.char-card-house-pip {
+.slat-edge {
   position: absolute;
-  top: 0.7rem;
-  right: 0.7rem;
+  left: 0; top: 0; height: 72px;
+  width: 3px;
+  background: linear-gradient(to bottom, transparent, var(--house-color) 20%, var(--house-color) 80%, transparent);
+  opacity: 0.4;
+  z-index: 3;
+  transition: width 0.3s ease, opacity 0.3s ease;
+}
+.slat:hover .slat-edge { width: 4px; opacity: 0.8; }
+.slat.active .slat-edge { width: 5px; opacity: 1; height: 100%; }
+
+.slat-header {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  height: 72px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 4.5rem;
+  gap: 2.5rem;
+  user-select: none;
+}
+
+.slat-bg-name {
+  position: absolute;
+  left: 4.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cinzel Decorative', serif;
+  font-size: 5rem;
+  color: var(--house-color);
+  opacity: 0.055;
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  z-index: 1;
+  transition: opacity 0.3s ease, letter-spacing 0.4s ease;
+}
+.slat:hover .slat-bg-name { opacity: 0.09; letter-spacing: 0.12em; }
+.slat.active .slat-bg-name { opacity: 0.02; }
+
+.slat-crest { font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; color: var(--house-color); opacity: 0.45; z-index: 2; transition: opacity 0.3s, transform 0.3s ease; }
+.slat:hover .slat-crest { opacity: 0.8; transform: scale(1.1); }
+.slat.active .slat-crest { opacity: 1; transform: scale(1.15); filter: drop-shadow(0 0 8px var(--house-color)); }
+
+.slat-name { font-family: 'Cinzel', serif; font-size: 1rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--house-color); position: relative; z-index: 2; transition: letter-spacing 0.4s ease, text-shadow 0.3s ease; }
+.slat:hover:not(.active) .slat-name { letter-spacing: 0.32em; text-shadow: 0 0 20px color-mix(in srgb, var(--house-color), transparent 50%); }
+.slat.active .slat-name { letter-spacing: 0.35em; color: #fff; text-shadow: 0 0 20px color-mix(in srgb, var(--house-color), transparent 40%); }
+
+.slat-creed { font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.88rem; color: var(--text-dim); position: relative; z-index: 2; opacity: 0; transform: translateX(-10px); transition: opacity 0.35s ease, transform 0.35s ease; }
+.slat:hover .slat-creed, .slat.active .slat-creed { opacity: 0.6; transform: translateX(0); }
+
+.slat-header-div { width: 1px; height: 16px; background: var(--house-color); opacity: 0; z-index: 2; transition: opacity 0.3s ease; }
+.slat:hover .slat-header-div, .slat.active .slat-header-div { opacity: 0.3; }
+.slat-count { margin-left: auto; font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.25em; color: var(--text-dim); opacity: 0.4; z-index: 2; }
+
+.slat-indicator { width: 6px; height: 6px; border-radius: 50%; background: color-mix(in srgb, var(--house-color), transparent 70%); transition: all 0.3s ease; }
+.slat.active .slat-indicator { background: var(--house-color); box-shadow: 0 0 10px var(--house-color); }
+
+/* ── INTERIOR SLIDING FILMSTRIP TRACKS ── */
+.slat.active {
+  height: calc(100vh - 35vh - (46px * 5)); 
+}
+
+.slat-body { 
+  display: flex; 
+  position: relative;
+  z-index: 4;
+  height: calc(100% - 72px);
+  width: 100%;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.5s ease 0.2s, transform 0.5s ease 0.2s;
+}
+
+.slat.active .slat-body {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.slat-strip-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  width: 100%;
+  padding: 0 4.5rem;
+  scrollbar-width: none;
+  cursor: grab;
+  position: relative;
+}
+.slat-strip-wrap::-webkit-scrollbar { display: none; }
+.slat-strip-wrap:active { cursor: grabbing; }
+
+.slat-filmstrip {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+  width: max-content;
+}
+
+.slat-drag-hint {
+  position: absolute;
+  bottom: 1rem;
+  right: 4.5rem;
   font-family: 'Cinzel', serif;
   font-size: 0.52rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  padding: 0.18rem 0.5rem;
-  border: 1px solid;
-}
-
-.char-pip--akagi      { color: #e05050; border-color: rgba(224,80,80,0.5); background: rgba(224,80,80,0.1); }
-.char-pip--saiwa      { color: #6090d0; border-color: rgba(96,144,208,0.5); background: rgba(96,144,208,0.1); }
-.char-pip--ryuhwa     { color: #9a70d0; border-color: rgba(154,112,208,0.5); background: rgba(154,112,208,0.1); }
-.char-pip--independent{ color: var(--gold); border-color: rgba(201,168,76,0.5); background: rgba(201,168,76,0.1); }
-.char-pip--wyrm       { color: #50b880; border-color: rgba(80,184,128,0.5); background: rgba(80,184,128,0.1); }
-
-.char-card-info {
-  position: absolute;
-  bottom: 0;
-  left: 0; right: 0;
-  padding: 1rem 1rem 0.9rem;
-  transform: translateY(4px);
-  transition: transform 0.3s ease;
-}
-
-.char-card:hover .char-card-info { transform: translateY(0); }
-
-.char-card-name {
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  color: var(--gold-light);
-  letter-spacing: 0.05em;
-  margin-bottom: 0.1rem;
-}
-
-.char-card-role {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.8rem;
-  color: var(--text-dim);
-  font-style: italic;
-}
-
-/* Hidden cards when filtering */
-.char-card.char-hidden {
-  display: none;
-}
-
-/* ── Character Detail Overlay ── */
-.char-detail-section-title {
-  font-family: 'Cinzel', serif;
-  font-size: 0.65rem;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--text-dim);
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid color-mix(in srgb, var(--gold-dim), transparent 72%);
+  opacity: 0.3;
+  pointer-events: none;
 }
 
-.char-detail-para {
-  font-family: 'EB Garamond', serif;
-  font-size: 1rem;
-  color: var(--text-body);
-  line-height: 1.8;
+/* ==========================================================
+   FILM CARDS (Sanitized Staggered Heights Engine)
+========================================================== */
+.film-card {
+  position: relative;
+  flex-shrink: 0;
+  width: 165px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.07);
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.35s ease, box-shadow 0.4s ease;
+  will-change: transform;
 }
 
-.char-detail-stat-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.8rem;
+.film-card:nth-child(3n+1) { height: 260px; }
+.film-card:nth-child(3n+2) { height: 230px; }
+.film-card:nth-child(3n)   { height: 285px; }
+
+.film-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: color-mix(in srgb, var(--house-color), transparent 30%);
+  box-shadow: 0 24px 48px rgba(0,0,0,0.55), 0 0 28px color-mix(in srgb, var(--house-color), transparent 65%);
+  z-index: 10;
 }
 
-.char-detail-stat {
-  display: flex;
-  flex-direction: column;
-  gap: 0.1rem;
+.film-card-img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  object-position: top center; 
+  filter: brightness(0.72) saturate(0.8); 
+  transition: filter 0.45s ease, transform 0.5s ease; 
 }
+.film-card:hover .film-card-img { filter: brightness(0.98) saturate(1.1); }
+.film-card-scrim { position: absolute; inset: 0; background: linear-gradient(to top, rgba(9,8,12,0.96) 0%, rgba(9,8,12,0.35) 42%, transparent 68%); }
+.film-card-seal { position: absolute; top: 0; left: 0; right: 0; height: 2px; background: var(--house-color); opacity: 0; transition: opacity 0.35s ease; }
+.film-card:hover .film-card-seal { opacity: 0.8; }
+.film-card-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 0.8rem 1rem; }
+.film-card-name { font-family: 'Cinzel', serif; font-size: 0.75rem; color: var(--gold-light); letter-spacing: 0.04em; display: block; }
+.film-card-role { font-family: 'EB Garamond', serif; font-style: italic; font-size: 0.7rem; color: var(--text-dim); display: block; }
 
-.char-detail-stat-label {
-  font-family: 'Cinzel', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--text-dim);
-}
-
-.char-detail-stat-val {
-  font-family: 'EB Garamond', serif;
-  font-size: 0.95rem;
-  color: var(--text-body);
-}
-
-.char-detail-traits {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem;
-}
-
-.char-detail-trait {
-  font-family: 'Cinzel', serif;
-  font-size: 0.58rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  padding: 0.2rem 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
-  color: var(--gold-dim);
-  background: color-mix(in srgb, var(--gold), transparent 94%);
-}
-
-/* ======================================================
+/* ==========================================================
    FULL SCREEN CHARACTER PROFILE SYSTEM
-   ====================================================== */
+========================================================== */
 .char-profile-layout {
   display: grid;
-  grid-template-columns: 45vw 1fr; /* 45% Artwork, 55% Lore Text split */
+  grid-template-columns: 45vw 1fr; 
   min-height: 100vh;
   width: 100%;
 }
@@ -1621,20 +1508,69 @@ color-mix(in srgb, var(--gold), var(--ink) 50%) 80%,  /* Deep base */
   gap: 2.5rem;
 }
 
-/* Responsive Mobile Stacking rules */
-@media (max-width: 900px) {
-  .char-profile-layout {
-    grid-template-columns: 1fr; /* Stacks artwork on top of text on tablets/phones */
-  }
-  .char-profile-hero {
-    height: 55vh;
-    border-right: none;
-    border-bottom: 1px solid color-mix(in srgb, var(--gold-dim), transparent 70%);
-  }
-  .char-profile-body {
-    height: auto;
-    padding: 3rem 1.5rem 6rem;
-  }
+/* ==========================================================
+   CHARACTER BIO INTERIOR COMPONENTS
+========================================================== */
+.char-detail-section-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid color-mix(in srgb, var(--gold-dim), transparent 72%);
+}
+
+.char-detail-para {
+  font-family: 'EB Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text-body);
+  line-height: 1.8;
+}
+
+.char-detail-stat-row {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.char-detail-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.char-detail-stat-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.char-detail-stat-val {
+  font-family: 'EB Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-body);
+}
+
+.char-detail-traits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.char-detail-trait {
+  font-family: 'Cinzel', serif;
+  font-size: 0.58rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--gold-dim), transparent 55%);
+  color: var(--gold-light);
+  background: color-mix(in srgb, var(--gold), transparent 94%);
+  display: inline-block;
 }
 
 /* ======================================================
