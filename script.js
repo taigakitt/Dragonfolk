@@ -1,14 +1,24 @@
 // === GLOBAL STATE ===
 let currentPage = 'landing', player, isPlaying = false, playerReady = false, lastSelectedImage = '';
 
-// === PAGE NAVIGATION ===
-function showPage(pageId) {
+// === PAGE NAVIGATION (WITH FIXED ROUTING SCOPE) ===
+// 🎯 FIXED: Declared updateURL as an optional parameter to prevent variable crash!
+function showPage(pageId, updateURL = true) {
   if (pageId === 'announce') setTimeout(initAnnounceParticles, 120);
   window.scrollTo(0, 0);
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  
   const el = document.getElementById(pageId);
   if (el) el.classList.add('active');
   currentPage = pageId;
+
+  if (updateURL) {
+    if (pageId === 'landing') {
+      history.pushState(null, '', window.location.pathname); // Clears the hash cleanly on home
+    } else {
+      window.location.hash = pageId;
+    }
+  }
 }
 
 function goBack() { showPage('landing'); }
@@ -65,7 +75,6 @@ function toggleRegion(el) {
   
   if (!isOpen) {
     el.classList.add('open');
-    // Direct access: No checks, just speed
     lastSelectedImage = el.querySelector('.lore-region-bg').style.backgroundImage;
     const activeFilter = document.querySelector('.lore-filter-btn.active').dataset.filter;
     const worldLorePage = document.getElementById('world-lore');
@@ -78,7 +87,8 @@ function toggleRegion(el) {
   }
 }
 
-// === INITIALIZATION ===
+// === INITIALIZATION & LINK DETECTION (CONSOLIDATED) ===
+// 🎯 FIXED: Merged your duplicate init listeners into a single clean vault loop!
 document.addEventListener('DOMContentLoaded', () => {
   document.querySelectorAll('.lore-filter-btn').forEach(btn => {
     btn.addEventListener('click', function() {
@@ -97,8 +107,25 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
   const defaultBtn = document.querySelector('.lore-filter-btn[data-filter="geography"]');
   if (defaultBtn) defaultBtn.click();
+
+  // 🔗 THE DEEP LINK CHECK: Auto-teleports deep link traffic on script arrival!
+  const sharedHash = window.location.hash.replace('#', '');
+  if (sharedHash) {
+    showPage(sharedHash, false); 
+  }
+});
+
+// 🪐 BROWSER NATIVE HISTORY ENGINE OVERSEER
+window.addEventListener('hashchange', () => {
+  const currentHash = window.location.hash.replace('#', '');
+  if (currentHash) {
+    showPage(currentHash, false);
+  } else {
+    showPage('landing', false);
+  }
 });
 
 function toggleKeys(el, e) {
@@ -110,7 +137,6 @@ function toggleKeys(el, e) {
 }
 
 // === CREATOR REQUEST FORM ===
-
 const GOOGLE_FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSeAyv9hzRUvk9A_78QV3YVxxTEliU_Ms5pzjJsGZ8fRp-MfKQ/formResponse';
 
 const FORM_FIELDS = {
@@ -156,12 +182,11 @@ function submitRequest() {
   .then(() => {
     status.textContent = 'Request sent. ✦ Thank you.';
     status.className = 'creator-form-status success';
-    // Clear fields
-            ['req-name','req-type','req-subject','req-body','req-contact']
-                .forEach(id => {
-                    const el = document.getElementById(id);
-                    if (el) el.value = '';
-  });
+    ['req-name','req-type','req-subject','req-body','req-contact']
+        .forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.value = '';
+        });
     document.getElementById('req-type').selectedIndex = 0;
   })
   .catch(() => {
@@ -174,72 +199,52 @@ function submitRequest() {
   });
 }
 
-
-// === CHARACTERS PAGE ===
-/*==========================================================
-    FACTION ARCHIVE CANOPY DATABASE
-==========================================================*/
-const FACTION_MANIFESTVS = {
-  akagi: {
-    name: "House Akagi", crest: "火", creed: "Loyalty · Discipline · Tradition",
-    desc: "Tanned skin, red horns, masters of offensive elemental magic. Loyalty is not blind here — it is chosen and renewed in every action. The sole heir carries the full weight of a House that is revered but carefully watched.",
-    traits: ["Offensive Magic", "Tanned Skin", "Red Horns", "Sole Heir Line"], color: "#e05050"
-  },
-  saiwa: {
-    name: "House Saiwa", crest: "盾", creed: "Loyalty · Adaptability · Strategy",
-    desc: "Pale skin, black horns, masters of defensive magic. They bend rather than break. Lord Kenji's calm authority and Lady Sayuri's cold resolve produced five heirs — each expected to be a weapon. The last arrived too soft for any of it.",
-    traits: ["Defensive Matrix", "Pale Skin", "Black Horns", "Five Heirs"], color: "#6090d0"
-  },
-  ryuhwa: {
-    name: "House Ryuhwa", crest: "強", creed: "Only the Strong Thrive",
-    desc: "Deep brown skin, white horns, masters of support magic that curdles into necromancy. Heirs rise by breaking their Lord. Lord Jinwoo broke his father in judgment, not anger. His daughter returned from a decade away wearing the same eyes.",
-    traits: ["Necromantic Support", "Brown Skin", "White Horns", "Blood Succession"], color: "#9a70d0"
-  },
-  koryuu: {
-    name: "Koryuu-gyeong", crest: "獄", creed: "The Imperial Capital Province",
-    desc: "The imperial capital — once the undisputed cultural heart of Goryūto, now feeling its dominance slip. Those who serve it do so with rigid authority and a growing dread that what they protect is already fading.",
-    traits: ["Prison Systems", "Rigid Order", "Imperial Guard"], color: "#607088"
-  },
-  independent: {
-    name: "Independent", crest: "✦", creed: "Bound to No Provincial Throne",
-    desc: "Those who answer to no House — wanderers, rogue captains of the Driftcrag Isles, and clifftop seers operating in the secret spaces the high court provincial crowns cannot reach.",
-    traits: ["Unclaimed Blood", "Self-Determined", "Isles Rogue"], color: "#c9a84c"
-  },
-  wyrm: {
-    name: "Wyrm Kin", crest: "爪", creed: "The Marginalized Fringe Caste",
-    desc: "Digitigrade legs, bestial profiles, called wyrm as a slur. The lowest rung of the continent's hierarchy — feared for their raw, primitive biology and denied the spaces Horned Ones move through freely.",
-    traits: ["Shattered Caste", "Digitigrade Legs", "Bestial Magic"], color: "#50b880"
-  }
-};
-
-// === CORE REPLACEMENT FILTER ENGINE ===
-function filterHouse(btn) {
-  document.querySelectorAll('.char-house-tab').forEach(b => b.classList.remove('active'));
-  btn.classList.add('active');
-
-  const house = btn.dataset.house;
+// === CHARACTERS PAGE CONTROLLER ===
+function filterHouse(slatElement) {
+  const houseId = slatElement.dataset.house;
   const hero = document.getElementById('charHero');
+  const alreadyActive = slatElement.classList.contains('active');
 
-  // Filter visibility states across vertical profile cards
-  document.querySelectorAll('.char-card').forEach(card => {
-    const match = house === 'all' || card.dataset.house === house;
-    card.classList.toggle('char-hidden', !match);
-  });
+  document.querySelectorAll('.slat').forEach(s => s.classList.remove('active'));
 
-  // 🎯 THE INTERFACE EXCHANGE ROUTINE: 
-  // If a house is targeted, fill the header database slots. If "all", switch back to default title!
-  const manifest = FACTION_MANIFESTVS[house];
-  if (manifest && hero) {
-    document.getElementById('manifestCrest').textContent = manifest.crest;
-    document.getElementById('manifestName').textContent = manifest.name;
-    document.getElementById('manifestCreed').textContent = manifest.creed;
-    document.getElementById('manifestDesc').textContent = manifest.desc;
-    document.getElementById('manifestTraits').innerHTML = manifest.traits.map(t => `<span class="manifest-trait-pill">${t}</span>`).join('');
-    
-    // Inject custom colors down to CSS context variables
-    hero.style.setProperty('--dynamic-house-color', manifest.color);
-    hero.classList.add('active-mode');
+  if (!alreadyActive) {
+    slatElement.classList.add('active');
+
+    const sourceTray = slatElement.querySelector('.slat-lore-source');
+    if (sourceTray && hero) {
+      document.getElementById('manifestCrest').textContent = sourceTray.querySelector('.source-crest').textContent;
+      document.getElementById('manifestName').textContent = sourceTray.querySelector('.source-name').textContent;
+      document.getElementById('manifestCreed').textContent = sourceTray.querySelector('.source-creed').textContent;
+      document.getElementById('manifestDesc').innerHTML = sourceTray.querySelector('.source-desc').innerHTML;
+      document.getElementById('manifestTraits').innerHTML = sourceTray.querySelector('.source-traits').innerHTML;
+      
+      const computedColor = getComputedStyle(slatElement).getPropertyValue('--house-color');
+      hero.style.setProperty('--dynamic-house-color', computedColor);
+      hero.classList.add('active-mode');
+    }
+
+    const strip = slatElement.querySelector('.slat-strip-wrap');
+    if (strip && !strip._drag) initDrag(strip);
+
   } else {
     if (hero) hero.classList.remove('active-mode');
+    slatElement.classList.remove('active'); 
   }
+}
+
+// ── MOUSE/TOUCH GRAB TRANSITION SCROLL ──
+function initDrag(el) {
+  el._drag = true;
+  let down = false, startX, scrollLeft;
+  el.addEventListener('mousedown', e => {
+    down = true; startX = e.pageX - el.offsetLeft; scrollLeft = el.scrollLeft;
+    el.style.cursor = 'grabbing';
+  });
+  el.addEventListener('mouseleave', () => { down = false; el.style.cursor = 'grab'; });
+  el.addEventListener('mouseup',    () => { down = false; el.style.cursor = 'grab'; });
+  el.addEventListener('mousemove', e => {
+    if (!down) return;
+    e.preventDefault();
+    el.scrollLeft = scrollLeft - (e.pageX - el.offsetLeft - startX) * 1.5;
+  });
 }
